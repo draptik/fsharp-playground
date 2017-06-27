@@ -115,3 +115,13 @@ The final `fsproj` section should look like this:
 TODO Ordering of compile instructions is very important in F#!
 
 None of the tests have changed. All tests should still be green.
+
+## Testing frameworks
+
+`FsUnit` seems to be the fluent assertion lib for f#. BUT it is not supported for the current version of .NET Core...
+
+```
+$ dotnet add package FsUnit.xUnit
+...
+error: Package FsUnit.xUnit 1.4.1 is not compatible with netcoreapp1.1 (.NETCoreApp,Version=v1.1).
+```
