@@ -28,7 +28,7 @@ The following command creates a template project for xunit.net:
 dotnet new xunit -lang f#
 ```
 
-- Add unit tests from exersism.io site.
+- Add unit tests from exercism.io site.
 - Implement...
 
 ```
