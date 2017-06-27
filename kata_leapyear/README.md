@@ -1,14 +1,39 @@
-Project runs on Ubuntu with .NET Core (`dotnet --version`: 1.0.4).
+System:
+```
+$ uname -a
+Linux raven 4.9.8-040908-generic #201702040431 SMP Sat Feb 4 09:32:59 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
 
+$ dotnet --version
+1.0.4
+
+$ apt search dotnet|grep installed
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+dotnet-dev-1.0.1/xenial,now 1.0.1-1 amd64 [installed]
+dotnet-dev-1.0.4/xenial,now 1.0.4-1 amd64 [installed]
+dotnet-host/xenial,now 2.0.0-preview1-002111-00-1 amd64 [installed,automatic]
+dotnet-hostfxr-1.0.1/xenial,now 1.0.1-1 amd64 [installed,automatic]
+dotnet-hostfxr-1.1.0/xenial,now 1.1.0-1 amd64 [installed,automatic]
+dotnet-sharedframework-microsoft.netcore.app-1.0.4/xenial,now 1.0.4-1 amd64 [installed,automatic]
+dotnet-sharedframework-microsoft.netcore.app-1.0.5/xenial,now 1.0.5-1 amd64 [installed,automatic]
+dotnet-sharedframework-microsoft.netcore.app-1.1.1/xenial,now 1.1.1-1 amd64 [installed,automatic]
+dotnet-sharedframework-microsoft.netcore.app-1.1.2/xenial,now 1.1.2-1 amd64 [installed,automatic]
+```
 
 # Initial setup
 
+The following command creates a template project for xunit.net:
 ```
 dotnet new xunit -lang f#
 ```
 
 - Add unit tests from exersism.io site.
 - Implement...
+
+```
+dotnet restore
+```
 
 # Usage
 
