@@ -23,15 +23,13 @@ let ``Asking a numeric question`` () =
 let ``Forceful questions`` () =
     Assert.True(hey "WHAT THE HELL WERE YOU THINKING?" = "Whoa, chill out!")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Shouting numbers`` () =
-//     Assert.That(hey "1, 2, 3 GO!", Is.EqualTo("Whoa, chill out!"))
+[<Fact>]
+let ``Shouting numbers`` () =
+    Assert.True(hey "1, 2, 3 GO!" = "Whoa, chill out!")
 
 // [<Fact>]
-// [<Ignore("Remove to run test")>]
 // let ``Only numbers`` () =
-//     Assert.That(hey "1, 2, 3", Is.EqualTo("Whatever."))
+//     Assert.True(hey "1, 2, 3" = "Whatever.")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
