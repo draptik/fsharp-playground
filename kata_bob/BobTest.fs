@@ -7,10 +7,9 @@ open Bob
 let ``Stating something`` () =
     Assert.True(hey "Tom-ay-to, tom-aaaah-to." = "Whatever.")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Shouting`` () =
-//     Assert.That(hey "WATCH OUT!", Is.EqualTo("Whoa, chill out!"))
+[<Fact>]
+let ``Shouting`` () =
+    Assert.True(hey "WATCH OUT!" = "Whoa, chill out!")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
