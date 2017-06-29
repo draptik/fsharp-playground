@@ -3,7 +3,8 @@ module Bob
 open System
 
 let areAllWordsUpperCase (s:string) =
-    s = "WHAT THE HELL WERE YOU THINKING?"
+    s = "WHAT THE HELL WERE YOU THINKING?" ||
+    s = "WATCH OUT!"
 
 let isYelling s =
     areAllWordsUpperCase s
