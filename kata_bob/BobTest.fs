@@ -19,10 +19,9 @@ let ``Asking a question`` () =
 let ``Asking a numeric question`` () =
     Assert.True(hey "You are, what, like 15?" = "Sure.")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Forceful questions`` () =
-//     Assert.That(hey "WHAT THE HELL WERE YOU THINKING?", Is.EqualTo("Whoa, chill out!"))
+[<Fact>]
+let ``Forceful questions`` () =
+    Assert.True(hey "WHAT THE HELL WERE YOU THINKING?" = "Whoa, chill out!")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
