@@ -10,11 +10,7 @@ let endsWithQuestionMark (s:string) =
 
 
 let hey statement =
-    if areAllWordsUpperCase statement
-        then "Whoa, chill out!"
-    elif endsWithQuestionMark statement
-        then "Sure."
-    elif statement = "Tom-ay-to, tom-aaaah-to." 
-        then "Whatever."
-    else    
-        "Whoa, chill out!"
+    if areAllWordsUpperCase statement then "Whoa, chill out!"
+    elif endsWithQuestionMark statement then "Sure."
+    elif statement = "Tom-ay-to, tom-aaaah-to." then "Whatever."
+    else "Whoa, chill out!"
