@@ -27,9 +27,9 @@ let ``Forceful questions`` () =
 let ``Shouting numbers`` () =
     Assert.True(hey "1, 2, 3 GO!" = "Whoa, chill out!")
 
-// [<Fact>]
-// let ``Only numbers`` () =
-//     Assert.True(hey "1, 2, 3" = "Whatever.")
+[<Fact>]
+let ``Only numbers`` () =
+    Assert.True(hey "1, 2, 3" = "Whatever.")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
