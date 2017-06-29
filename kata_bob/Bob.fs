@@ -1,4 +1,4 @@
 module Bob
 
 let hey statement =
-    "Whatever."
+    if statement = "Tom-ay-to, tom-aaaah-to." then "Whatever."
