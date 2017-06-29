@@ -15,10 +15,9 @@ let ``Shouting`` () =
 let ``Asking a question`` () =
     Assert.True(hey "Does this cryogenic chamber make me look fat?" = "Sure.")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Asking a numeric question`` () =
-//     Assert.That(hey "You are, what, like 15?", Is.EqualTo("Sure."))
+[<Fact>]
+let ``Asking a numeric question`` () =
+    Assert.True(hey "You are, what, like 15?" = "Sure.")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
