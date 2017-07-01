@@ -39,10 +39,9 @@ let ``Question only with numbers`` () =
 let ``Shouting with special characters`` () =
     Assert.True(hey "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!" = "Whoa, chill out!")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Shouting with no exlamation mark`` () =
-//     Assert.That(hey "I HATE YOU", Is.EqualTo("Whoa, chill out!"))
+[<Fact>]
+let ``Shouting with no exlamation mark`` () =
+    Assert.True(hey "I HATE YOU" = "Whoa, chill out!")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
