@@ -1,10 +1,12 @@
 module Bob
 
 open System
+open System.Text.RegularExpressions
 
-let areAllWordsUpperCase (s:string) =
-    s = "WHAT THE HELL WERE YOU THINKING?" ||
-    s = "WATCH OUT!"
+let areAllWordsUpperCase s =
+    let acronyms = ["OK"]
+    let m = Regex.Match(s, "[A-Z]{2,}") in
+        m.Success
 
 let isYelling s =
     areAllWordsUpperCase s
@@ -16,6 +18,4 @@ let endsWithQuestionMark (s:string) =
 let hey statement =
     if isYelling statement then "Whoa, chill out!"
     elif endsWithQuestionMark statement then "Sure."
-    elif statement = "Tom-ay-to, tom-aaaah-to." then "Whatever."
-    elif statement = "1, 2, 3" then "Whatever."
-    else "Whoa, chill out!"
+    else "Whatever."
