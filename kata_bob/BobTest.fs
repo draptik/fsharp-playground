@@ -35,10 +35,9 @@ let ``Only numbers`` () =
 let ``Question only with numbers`` () =
     Assert.True(hey "4?" = "Sure.")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Shouting with special characters`` () =
-//     Assert.That(hey "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!", Is.EqualTo("Whoa, chill out!"))
+[<Fact>]
+let ``Shouting with special characters`` () =
+    Assert.True(hey "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!" = "Whoa, chill out!")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
