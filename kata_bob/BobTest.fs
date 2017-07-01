@@ -43,10 +43,9 @@ let ``Shouting with special characters`` () =
 let ``Shouting with no exlamation mark`` () =
     Assert.True(hey "I HATE YOU" = "Whoa, chill out!")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Statement containing question mark`` () =
-//     Assert.That(hey "Ending with ? means a question.", Is.EqualTo("Whatever."))
+[<Fact>]
+let ``Statement containing question mark`` () =
+    Assert.True(hey "Ending with ? means a question." = "Whatever.")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
