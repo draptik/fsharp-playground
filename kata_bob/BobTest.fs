@@ -31,10 +31,9 @@ let ``Shouting numbers`` () =
 let ``Only numbers`` () =
     Assert.True(hey "1, 2, 3" = "Whatever.")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Question only with numbers`` () =
-//     Assert.That(hey "4?", Is.EqualTo("Sure."))
+[<Fact>]
+let ``Question only with numbers`` () =
+    Assert.True(hey "4?" = "Sure.")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
