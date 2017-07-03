@@ -19,3 +19,7 @@ let ``given input AA should return 1 match for regex`` () =
 [<Fact>]
 let ``given input AA BB should return 2 matches for regex`` () =
     Assert.Equal(2, getNumberOfMatches "[A-Z]{2,}" "AA BB")
+
+[<Fact>]
+let ``given input AA BB cc DD should return 3 matches for regex`` () =
+    Assert.Equal(3, getNumberOfMatches "[A-Z]{2,}" "AA BB cc DD")
