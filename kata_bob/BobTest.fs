@@ -48,9 +48,8 @@ let ``Statement containing question mark`` () =
     Assert.True(hey "Ending with ? means a question." = "Whatever.")
 
 // [<Fact>]
-// [<Ignore("Remove to run test")>]
 // let ``Prattling on`` () =
-//     Assert.That(hey "Wait! Hang on. Are you going to be OK?", Is.EqualTo("Sure."))
+//     Assert.True(hey "Wait! Hang on. Are you going to be OK?" = "Sure.")
 
 // [<Fact>]
 // [<Ignore("Remove to run test")>]
