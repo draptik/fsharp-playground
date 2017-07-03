@@ -12,6 +12,11 @@ let getNumberOfMatches r s =
     let allMatches = regex.Matches s
     allMatches.Count
 
+// let (|MyMatch|_|) pattern input =
+//     let m = Regex.Match(input, pattern) in
+//     if m.Success then
+//         for g in m.Groups -> g.Value
+
 let getMatches r s =
     match s with
     | "AA" -> ["AA"]
