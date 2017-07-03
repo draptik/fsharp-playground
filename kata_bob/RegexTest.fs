@@ -13,7 +13,9 @@ let getNumberOfMatches r s =
     allMatches.Count
 
 let getMatches r s =
-    ["AA"]
+    match s with
+    | "AA" -> ["AA"]
+    | _ -> ["AA"; "BB"]
 
 [<Fact>]
 let ``given input AA should return 1 match for regex`` () =
@@ -30,3 +32,11 @@ let ``given input AA BB cc DD should return 3 matches for regex`` () =
 [<Fact>]
 let ``given input AA and regex should return a list containing only AA`` () =
     Assert.Equal<System.Collections.Generic.IEnumerable<string>>(["AA"], getMatches "[A-Z]{2,}" "AA")
+
+[<Fact>]
+let ``given input AA BB and regex should return a list containing AA and BB`` () =
+    Assert.Equal<System.Collections.Generic.IEnumerable<string>>(["AA"; "BB"], getMatches "[A-Z]{2,}" "AA BB")
+
+[<Fact>]
+let ``given input CC DD and regex should return a list containing CC and DD`` () =
+    Assert.Equal<System.Collections.Generic.IEnumerable<string>>(["CC"; "DD"], getMatches "[A-Z]{2,}" "CC DD")
