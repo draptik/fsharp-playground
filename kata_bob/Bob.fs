@@ -15,17 +15,33 @@ let areAllWordsUpperCaseAndNotAcronyms s =
             not allMatchesAreAcronyms
         else false
 
-let isYelling s =
-    areAllWordsUpperCaseAndNotAcronyms s
+let (|IsYelling|_|) s =   
+    if areAllWordsUpperCaseAndNotAcronyms s then Some IsYelling else None
 
-let endsWithQuestionMark (s:string) =
-    s.EndsWith "?"
+// let isYelling s =   
+//     areAllWordsUpperCaseAndNotAcronyms s
 
-let isMeaningless (s:string) =
-    String.IsNullOrWhiteSpace(s)
+let (|EndsWithQuestionMark|_|) (s:string) =
+    if s.EndsWith "?" then Some EndsWithQuestionMark else None
+
+// let endsWithQuestionMark (s:string) =
+//     s.EndsWith "?"
+
+let (|IsMeaningless|_|) (s:string) = 
+    if String.IsNullOrWhiteSpace(s) then Some IsMeaningless else None
+
+// let isMeaningless (s:string) =
+//     String.IsNullOrWhiteSpace(s)
+
+// let hey statement =
+//     if isYelling statement then "Whoa, chill out!"
+//     elif endsWithQuestionMark statement then "Sure."
+//     elif isMeaningless statement then "Fine. Be that way!"
+//     else "Whatever."
 
 let hey statement =
-    if isYelling statement then "Whoa, chill out!"
-    elif endsWithQuestionMark statement then "Sure."
-    elif isMeaningless statement then "Fine. Be that way!"
-    else "Whatever."
+    match statement with
+    | IsYelling -> "Whoa, chill out!"
+    | EndsWithQuestionMark -> "Sure."
+    | IsMeaningless -> "Fine. Be that way!"
+    | _ -> "Whatever."
