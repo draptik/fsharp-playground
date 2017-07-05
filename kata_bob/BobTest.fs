@@ -5,63 +5,60 @@ open Bob
 
 [<Fact>]
 let ``Stating something`` () =
-    Assert.True(hey "Tom-ay-to, tom-aaaah-to." = "Whatever.")
+    Assert.Equal("Whatever.", hey "Tom-ay-to, tom-aaaah-to.")
 
 [<Fact>]
 let ``Shouting`` () =
-    Assert.True(hey "WATCH OUT!" = "Whoa, chill out!")
+    Assert.Equal("Whoa, chill out!", hey "WATCH OUT!")
 
 [<Fact>]
 let ``Asking a question`` () =
-    Assert.True(hey "Does this cryogenic chamber make me look fat?" = "Sure.")
+    Assert.Equal("Sure.", hey "Does this cryogenic chamber make me look fat?")
 
 [<Fact>]
 let ``Asking a numeric question`` () =
-    Assert.True(hey "You are, what, like 15?" = "Sure.")
+    Assert.Equal("Sure.", hey "You are, what, like 15?")
 
 [<Fact>]
 let ``Forceful questions`` () =
-    Assert.True(hey "WHAT THE HELL WERE YOU THINKING?" = "Whoa, chill out!")
+    Assert.Equal("Whoa, chill out!", hey "WHAT THE HELL WERE YOU THINKING?")
 
 [<Fact>]
 let ``Shouting numbers`` () =
-    Assert.True(hey "1, 2, 3 GO!" = "Whoa, chill out!")
+    Assert.Equal("Whoa, chill out!", hey "1, 2, 3 GO!")
 
 [<Fact>]
 let ``Only numbers`` () =
-    Assert.True(hey "1, 2, 3" = "Whatever.")
+    Assert.Equal("Whatever.", hey "1, 2, 3")
 
 [<Fact>]
 let ``Question only with numbers`` () =
-    Assert.True(hey "4?" = "Sure.")
+    Assert.Equal("Sure.", hey "4?")
 
 [<Fact>]
 let ``Shouting with special characters`` () =
-    Assert.True(hey "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!" = "Whoa, chill out!")
+    Assert.Equal("Whoa, chill out!", hey "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!")
 
 [<Fact>]
 let ``Shouting with no exlamation mark`` () =
-    Assert.True(hey "I HATE YOU" = "Whoa, chill out!")
+    Assert.Equal("Whoa, chill out!", hey "I HATE YOU")
 
 [<Fact>]
 let ``Statement containing question mark`` () =
-    Assert.True(hey "Ending with ? means a question." = "Whatever.")
+    Assert.Equal("Whatever.", hey "Ending with ? means a question.")
 
-// [<Fact>]
-// let ``Prattling on`` () =
-//     Assert.True(hey "Wait! Hang on. Are you going to be OK?" = "Sure.")
+[<Fact>]
+let ``Prattling on`` () =
+    Assert.Equal("Sure.", hey "Wait! Hang on. Are you going to be OK?")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Silence`` () =
-//     Assert.That(hey "", Is.EqualTo("Fine. Be that way!"))
+[<Fact>]
+let ``Silence`` () =
+    Assert.Equal("Fine. Be that way!", hey "")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Prolonged silence`` () =
-//     Assert.That(hey "    ", Is.EqualTo("Fine. Be that way!"))
+[<Fact>]
+let ``Prolonged silence`` () =
+    Assert.Equal("Fine. Be that way!", hey "    ")
 
-// [<Fact>]
-// [<Ignore("Remove to run test")>]
-// let ``Multiple line question`` () =
-//     Assert.That(hey "Does this cryogenic chamber make me look fat?\nno", Is.EqualTo("Whatever."))
+[<Fact>]
+let ``Multiple line question`` () =
+    Assert.Equal("Whatever.", hey "Does this cryogenic chamber make me look fat?\nno")
