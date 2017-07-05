@@ -7,29 +7,32 @@ let areAllWordsAcronyms words =
     let acronyms = ["OK"]
     Seq.forall (fun word -> List.contains word acronyms) words
 
+let mapRegexMatchesToSeq groupCollection =
+    groupCollection |> Seq.cast<Group> |> Seq.map (fun x -> x.Value)
+
+(* TODO Replace this *)
 let isAnyWordUpperCaseAndNotAcronym s =
     let m = Regex.Match(s, "[A-Z]{2,}") in
         if m.Success then
             let allMatchesAreAcronyms =
-                m.Groups
-                |> Seq.cast<Group>
-                |> Seq.map (fun x -> x.Value) (* 'map' corresponds to 'Select' in C# *)
+                mapRegexMatchesToSeq m.Groups
                 |> areAllWordsAcronyms
             not allMatchesAreAcronyms
         else false
 
-let (|GetAllUpperCaseWords|_|) s =
-    let mapRegexMatchesToSeq groupCollection =
-        groupCollection |> Seq.cast<Group> |> Seq.map (fun x -> x.Value)
+// let (|GetAllUpperCaseWords|_|) s =
+//     let m = Regex.Match(s, "[A-Z]{2,}")
+//     if m.Success then Some mapRegexMatchesToSeq else None
 
-    let m = Regex.Match(s, "[A-Z]{2,}")
-
-    if m.Success then Some mapRegexMatchesToSeq
-    else None
-        
 
 let (|IsYelling|_|) s =
     if isAnyWordUpperCaseAndNotAcronym s then Some IsYelling else None
+// let (|IsYelling|_|) s =
+//     match s with
+//     | GetAllUpperCaseWords 
+//         | areAllWordsAcronyms -> Some IsYelling
+//         | _ -> None
+//     | _ -> false
 
 
 let (|EndsWithQuestionMark|_|) (s:string) =
