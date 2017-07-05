@@ -14,10 +14,8 @@ let mapRegexMatchesToSeq groupCollection =
 let isAnyWordUpperCaseAndNotAcronym s =
     let m = Regex.Match(s, "[A-Z]{2,}") in
         if m.Success then
-            let allMatchesAreAcronyms =
-                mapRegexMatchesToSeq m.Groups
-                |> areAllWordsAcronyms
-            not allMatchesAreAcronyms
+            let upperCaseWords = mapRegexMatchesToSeq m.Groups
+            not (upperCaseWords |> areAllWordsAcronyms)
         else false
 
 // let (|GetAllUpperCaseWords|_|) s =
