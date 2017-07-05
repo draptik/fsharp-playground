@@ -3,15 +3,19 @@ module Bob
 open System
 open System.Text.RegularExpressions
 
-let isAnyWordUpperCaseAndNotAcronym s =
+let areAllWordsAcronyms words =
     let acronyms = ["OK"]
+    Seq.forall (fun word -> List.contains word acronyms) words
+
+let isAnyWordUpperCaseAndNotAcronym s =
+    
     let m = Regex.Match(s, "[A-Z]{2,}") in
         if m.Success then
             let allMatchesAreAcronyms =
                 m.Groups
                 |> Seq.cast<Group>
                 |> Seq.map (fun x -> x.Value) (* 'map' corresponds to 'Select' in C# *)
-                |> Seq.forall (fun x -> List.contains x acronyms) (* 'forall' corresponds to 'All' in C#. Returns true if ALL uppercase words are acronyms *)
+                |> areAllWordsAcronyms
             not allMatchesAreAcronyms
         else false
 
