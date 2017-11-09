@@ -228,4 +228,5 @@ let gameEngine = GameEngine(gameWorld)
 // ------- Command Parsing --------
 //
 
-
+// let expectChar expectedChar inputChars =
+//     match inputChars with
