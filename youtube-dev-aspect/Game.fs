@@ -186,6 +186,7 @@ let displayResult result =
 
 type GameEvent =
     | UpdateState of (World -> Result<World, string>)
+    | ResetState of World
     | EndGameLoop
 
 let applyUpdate updateFunc worldState =
@@ -206,6 +207,7 @@ type GameEngine(initialState: World) =
                     let! eventMsg = inbox.Receive()
                     match eventMsg with
                     | UpdateState updateFunc -> return! innerLoop (applyUpdate updateFunc worldState)
+                    | ResetState newState -> return! innerLoop newState
                     | EndGameLoop -> return ()
                 }
                 
@@ -213,6 +215,9 @@ type GameEngine(initialState: World) =
 
     member this.ApplyUpdate(updateFunc) = 
         gameLoop.Post(UpdateState updateFunc)
+
+    member this.ResetState(newState) =
+        gameLoop.Post(ResetState newState)
 
     member this.Stop() =
         gameLoop.Post(EndGameLoop)
@@ -244,5 +249,7 @@ let playerController =
             }
             
         innerLoop 0)
+
+gameEngine.ResetState(gameWorld)
 
 playerController.Post("Stop")
