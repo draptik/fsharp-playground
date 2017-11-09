@@ -1,58 +1,59 @@
 //
-// ----------- Model -----------------------
+// --------- Model ---------
 //
 
 type Details =
-    {   Name: string;
-        Description: string }
+    { Name: string
+      Description: string }
 
 type Item =
-    {   Details: Details }
+    { Details: Details }
 
 type RoomId =
     | RoomId of string
 
-type Exit = 
+type Exit =
     | PassableExit of string * destination: RoomId
-    | LockedExit of string  * key: Item * next: Exit
+    | LockedExit of string * key: Item * next: Exit 
     | NoExit of string option
 
 type Exits =
-    {   North: Exit;
-        South: Exit;
-        East: Exit;
-        West: Exit }
+    { North: Exit
+      South: Exit
+      East: Exit
+      West: Exit }
 
 type Room =
-    {   Id: RoomId
-        Details: Details
-        Items: Item list
-        Exits: Exits }
+    { Id: RoomId
+      Details: Details
+      Items: Item list
+      Exits: Exits }
 
 type Player =
-    {   Details: Details
-        Location: RoomId
-        Inventory: Item list }
+    { Details: Details
+      Location: RoomId
+      Inventory: Item list }
 
 type World =
-    {   Rooms: Map<RoomId, Room>
-        Player: Player }
+    { Rooms: Map<RoomId, Room> 
+      Player: Player }
 
-// ------------ Initial World ----------------
+// --------- Initial World ---------
+
 let key: Item = 
     { Details =
           { Name = "A shiny key"
             Description = "This key looks like it could open a nearby door."} }
 
 let allRooms = [
-
+    
     { Id = RoomId "center"
       Details = 
-        {   Name = "A central room"
-            Description = "You are standing in a central room with exits in all directions.  A single brazier lights the room." }
+          { Name = "A central room"
+            Description = "You are standing in a central room with exits in all directions.  A single brazier lights the room."}
       Items = []
-      Exits = 
-        {   North = PassableExit ("You see a darkened passageway to the north.", RoomId "north1")
+      Exits =
+          { North = PassableExit ("You see a darkened passageway to the north.", RoomId "north1")
             South = PassableExit ("You see door to the south.  A waft of cold air hits your face.", RoomId "south1")
             East = LockedExit ("You see a locked door to the east.", key, PassableExit ("You see an open door to the east.", RoomId "east1"))
             West = PassableExit ("You see an interesting room to the west.", RoomId "west1") }}
@@ -103,18 +104,20 @@ let allRooms = [
 ]
 
 let player =
-    {   Details = { Name = "Luke"; Description = "Just your average adventurer." }
-        Inventory = []
-        Location = RoomId "center" }
+    { Details = { Name = "Luke"; Description = "Just your average adventurer."}
+      Inventory = []
+      Location = RoomId "center" }
 
 let gameWorld =
     { Rooms =
         allRooms
         |> Seq.map (fun room -> (room.Id, room))
         |> Map.ofSeq
-      Player = player }
+      Player = player}
 
-// ------------Logic --------------------------
+//
+// --------- Logic --------- 
+//
 
 type Result<'TSuccess, 'TFailure> =
     | Success of 'TSuccess
@@ -137,7 +140,7 @@ let getRoom world roomId =
     | None -> Failure "Room does not exist!"
 
 let describeDetails details =
-    sprintf "\n\n\n%s\n\n%s\n\n" details.Name details.Description
+    sprintf "\n\n%s\n\n%s\n\n" details.Name details.Description
 
 let extractDetailsFromRoom (room: Room) =
     room.Details
@@ -147,10 +150,10 @@ let describeCurrentRoom world =
     |> getRoom world
     |> (bind (switch extractDetailsFromRoom) >> bind (switch describeDetails))
 
-let north ({ North = northExit }: Exits) = northExit
-let south ({ South = southExit }: Exits) = southExit
-let east ({ East = eastExit }: Exits) = eastExit
-let west ({ West = westExit }: Exits) = westExit
+let north exits = exits.North
+let south exits = exits.South
+let east exits = exits.East
+let west exits = exits.West
 
 let getCurrentRoom world =
     world.Player.Location
@@ -158,18 +161,18 @@ let getCurrentRoom world =
 
 let setCurrentRoom world room =
     { world with
-        Player = { world.Player with Location = room.Id } }
+        Player = { world.Player with Location = room.Id} }
 
 let getExit direction exits =
     match (direction exits) with
     | PassableExit (_, roomId) -> Success roomId
-    | LockedExit (_) -> Failure "There is a locked door in that direction"
-    | NoExit (_) -> Failure "There is no room in that direction"
+    | LockedExit (_) -> Failure "There is a locked door in that direction."
+    | NoExit (_) -> Failure "There is no room in that direction."
 
 let move direction world =
     world
     |> getCurrentRoom
-    >>= switch (fun room -> room.Exits)
+    >>= switch (fun room -> room.Exits) 
     >>= getExit direction
     >>= getRoom world
     >>= switch (setCurrentRoom world)
@@ -178,11 +181,3 @@ let displayResult result =
     match result with
     | Success s -> printf "%s" s
     | Failure f -> printf "%s" f
-
-gameWorld
-|> move south
-|> bind (move north)
-|> bind (move east)
-|> bind describeCurrentRoom
-|> displayResult
-
