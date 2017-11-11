@@ -22,9 +22,9 @@ let mirrorLine (line: string) =
 
 let getDiamond input =
     let upperLeft = 
-        [ "__A"; 
-          "_B_"; 
-          "C__"]
+        [ "__" + "A" + ""; 
+          "_" + "B" + "_"; 
+          "" + "C" + "__"]
 
     let upperHalf = 
         upperLeft
