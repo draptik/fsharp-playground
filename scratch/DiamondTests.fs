@@ -41,3 +41,33 @@ let ``generate a diamond for C`` () =
         "C___C"; 
         "_B_B_"; 
         "__A__"]
+
+[<Fact>]
+let ``mirror the upper half`` () =
+    mirror(
+        [
+        "__A__"; 
+        "_B_B_"; 
+        "C___C"
+        ])
+    |> should equal [
+        "__A__"; 
+        "_B_B_"; 
+        "C___C"; 
+        "_B_B_"; 
+        "__A__"]
+
+[<Fact>]
+let ``mirror the given entries`` () =
+    mirror(
+        [
+        "A"; 
+        "B"; 
+        "C"
+        ])
+    |> should equal [
+        "A"; 
+        "B"; 
+        "C"; 
+        "B"; 
+        "A"]        
