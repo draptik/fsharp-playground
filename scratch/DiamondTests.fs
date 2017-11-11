@@ -3,12 +3,12 @@ module DiamondTests
 open FsUnit
 open Xunit
 
-let mirror (upperHalf: string list) =
-    let lowerHalf =
-        upperHalf.[..(upperHalf.Length - 2)]
+let mirror (entries: string list) =
+    let mirroredEntries =
+        entries.[..(entries.Length - 2)]
         |> List.rev
 
-    List.append upperHalf lowerHalf
+    List.append entries mirroredEntries
 
 let getDiamond input =
     
