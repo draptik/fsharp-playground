@@ -37,13 +37,16 @@ let makeUpperLeft input =
     generateCharacterSequence input
     |> List.mapi makeLine
 
+let makeUpperHalf distance =
+    makeUpperLeft distance
+    |> List.map mirrorLine
+
 let getDiamond input =
+
     let distance = distanceFromA "C"
 
-    let upperHalf = 
-        makeUpperLeft distance
-        |> List.map mirrorLine
-    
+    let upperHalf = makeUpperHalf distance
+
     mirror(upperHalf)
 
 [<Fact(Skip = "TODO")>]
