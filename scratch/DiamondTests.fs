@@ -2,7 +2,6 @@ module DiamondTests
 
 open FsUnit
 open Xunit
-open System
 
 let mirror (entries: string list) =
     let mirroredEntries =
@@ -20,9 +19,13 @@ let mirrorLine (line: string) =
     |> mirror
     |> String.concat ""
 
+let dashes (num: int) =
+    "__"
+
 let getDiamond input =
+
     let upperLeft = 
-        [ "__" + "A" + ""; 
+        [ dashes 2 + "A" + ""; 
           "_" + "B" + "_"; 
           "" + "C" + "__"]
 
@@ -98,3 +101,7 @@ let ``mirror the given entries`` () =
 let ``mirror the given line`` () =
     mirrorLine "__A"    |> should equal "__A__"
     mirrorLine "FSharp" |> should equal "FSharprahSF"
+
+[<Fact>]
+let ``generate expected number of dashes`` () =
+    dashes 2 |> should equal "__"
