@@ -105,3 +105,4 @@ let ``mirror the given line`` () =
 [<Fact>]
 let ``generate expected number of dashes`` () =
     dashes 2 |> should equal "__"
+    dashes 4 |> should equal "____"
