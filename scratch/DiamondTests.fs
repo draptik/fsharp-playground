@@ -21,10 +21,13 @@ let mirrorLine (line: string) =
     |> String.concat ""
 
 let getDiamond input =
-    let upperHalf = 
+    let upperLeft = 
         [ "__A"; 
           "_B_"; 
-          "C__"] 
+          "C__"]
+
+    let upperHalf = 
+        upperLeft
         |> List.map mirrorLine
     
     mirror(upperHalf)
