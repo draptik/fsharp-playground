@@ -86,5 +86,7 @@ let ``mirror the given entries`` () =
         "B"; 
         "A"]                
 
+[<Fact>]
 let ``mirror the given line`` () =
-    mirrorLine "__A" |> should equal "__A__"
+    mirrorLine "__A"    |> should equal "__A__"
+    mirrorLine "FSharp" |> should equal "FSharprahSF"
