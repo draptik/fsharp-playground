@@ -3,10 +3,14 @@ module DiamondTests
 open FsUnit
 open Xunit
 
-let mirror upperHalf =
-    let lowerHalf = [
-        "_B_B_"; 
-        "__A__"]
+let mirror (upperHalf: string list) =
+    let lowerHalf =
+        upperHalf.[..1]
+        |> List.rev
+
+    // let lowerHalf = [
+    //     "_B_B_"; 
+    //     "__A__"]
     
     List.append upperHalf lowerHalf
 
