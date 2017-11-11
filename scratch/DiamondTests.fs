@@ -4,11 +4,11 @@ open FsUnit
 open Xunit
 
 let getDiamond input =
-    [
+    List.append [
         "__A__"; 
         "_B_B_"; 
-        "C___C"; 
-        "_B_B_"; 
+        "C___C"] 
+        ["_B_B_"; 
         "__A__"]
 
 [<Fact(Skip = "TODO")>]
