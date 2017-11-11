@@ -2,7 +2,6 @@ module DiamondTests
 
 open FsUnit
 open Xunit
-open FsUnit.CustomMatchers
 
 let mirror (entries: string list) =
     let mirroredEntries =
@@ -27,8 +26,9 @@ let distanceFromA (input: string) =
     let c = input.[0]
     (c |> int) - ('A' |> int)
 
-let generateCharacterSequence input = 
-    [ "A"; "B"; "C" ]
+let generateCharacterSequence (input: string) : string list = 
+    ['A'..(distanceFromA input + ('A' |> int) |> char)] 
+    |> List.map string
 
 let getDiamond input =
     let characters = generateCharacterSequence "C"
