@@ -30,12 +30,14 @@ let generateCharacterSequence (input: string) : string list =
     ['A'..(distanceFromA input + ('A' |> int) |> char)] 
     |> List.map string
 
+let makeLine index character =
+    dashes ((distanceFromA "C") - index) + character + dashes (index)
+
 let getDiamond input =
     
     let upperLeft = 
         generateCharacterSequence "C"
-        |> List.mapi (fun index character -> 
-            dashes ((distanceFromA "C") - index) + character + dashes (index))
+        |> List.mapi makeLine
 
     let upperHalf = 
         upperLeft
