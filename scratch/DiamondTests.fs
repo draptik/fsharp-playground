@@ -24,9 +24,13 @@ let dashes (num: int) =
 
 let getDiamond input =
     let upperLeft = 
-        [ dashes (2 - 0) + "A" + dashes (2 - 2); 
-          dashes (2 - 1) + "B" + dashes (2 - 1); 
-          dashes (2 - 2) + "C" + dashes (2 - 0)]
+        [ "A"; "B"; "C"]
+        |> List.mapi (fun index character -> dashes (2 - index) + character + dashes (index))
+    
+    // let upperLeft = 
+    //     [ dashes (2 - 0) + "A" + dashes (2 - 2); 
+    //       dashes (2 - 1) + "B" + dashes (2 - 1); 
+    //       dashes (2 - 2) + "C" + dashes (2 - 0)]
 
     let upperHalf = 
         upperLeft
