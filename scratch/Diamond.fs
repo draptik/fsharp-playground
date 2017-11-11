@@ -27,12 +27,13 @@ let generateCharacterSequence offsetFromA =
     ['A'..(offsetFromA + ('A' |> int) |> char)] 
     |> List.map string
 
-let makeLine index character =
-    dashes ((distanceFromA "C") - index) + character + dashes (index)
+// let makeLine index character =
+//     dashes ((distanceFromA "C") - index) + character + dashes (index)
 
-let makeUpperLeft input =
-    generateCharacterSequence input
-    |> List.mapi makeLine
+let makeUpperLeft numberOfCharsOffsetFromA : string list =
+    generateCharacterSequence numberOfCharsOffsetFromA
+    |> List.mapi (fun index currentChar ->
+        dashes (numberOfCharsOffsetFromA - index) + currentChar + dashes (index))
 
 let makeUpperHalf distance =
     makeUpperLeft distance
@@ -40,7 +41,7 @@ let makeUpperHalf distance =
 
 let getDiamond input =
     
-    distanceFromA "C"
+    distanceFromA input
     |> makeUpperHalf
     |> mirror
 

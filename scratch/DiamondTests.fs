@@ -6,11 +6,11 @@ open Diamond
 
 [<Fact(Skip = "TODO")>]
 let ``generate a diamond for A`` () =
-    getDiamond('A') |> should equal ["A"]
+    getDiamond("A") |> should equal ["A"]
 
-[<Fact(Skip = "TODO")>]
+[<Fact>]
 let ``generate a diamond for B`` () =
-    getDiamond('B') 
+    getDiamond("B") 
     |> should equal [
         "_A_"; 
         "B_B"; 
@@ -18,7 +18,7 @@ let ``generate a diamond for B`` () =
 
 [<Fact>]
 let ``generate a diamond for C`` () =
-    getDiamond('C') 
+    getDiamond("C") 
     |> should equal [
         "__A__"; 
         "_B_B_"; 
