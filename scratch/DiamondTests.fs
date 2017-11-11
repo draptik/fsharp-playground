@@ -12,14 +12,13 @@ let mirror (entries: string list) =
     List.append entries mirroredEntries
 
 let mirrorLine (line: string) =
-    let toCharArray s =
-        [for c in s -> c]
+
     line
-        |> toCharArray
-        |> Seq.map (fun x -> x.ToString()) 
-        |> Seq.toList
-        |> mirror
-        |> String.concat ""
+    |> (fun s -> [for c in s -> c])
+    |> Seq.map (fun x -> x.ToString()) 
+    |> Seq.toList
+    |> mirror
+    |> String.concat ""
 
 let getDiamond input =
     
