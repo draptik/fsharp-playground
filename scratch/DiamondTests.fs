@@ -23,10 +23,11 @@ let dashes (num: int) =
     String.replicate num "_"
 
 let distanceFromA = 
-    2
+    ('C' |> int) - ('A' |> int)
+    // 2
 
 let getDiamond input =
-    let characters = [ "A"; "B"; "C"]
+    let characters = [ "A"; "B"; "C" ]
     
     let upperLeft = 
         characters
