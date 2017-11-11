@@ -25,9 +25,9 @@ let dashes (num: int) =
 let getDiamond input =
 
     let upperLeft = 
-        [ dashes 2 + "A" + ""; 
-          "_" + "B" + "_"; 
-          "" + "C" + "__"]
+        [ dashes 2 + "A" + dashes 0; 
+          dashes 1 + "B" + dashes 1; 
+          dashes 0 + "C" + dashes 2]
 
     let upperHalf = 
         upperLeft
