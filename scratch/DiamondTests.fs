@@ -2,6 +2,7 @@ module DiamondTests
 
 open FsUnit
 open Xunit
+open System
 
 let mirror (entries: string list) =
     let mirroredEntries =
@@ -10,9 +11,34 @@ let mirror (entries: string list) =
 
     List.append entries mirroredEntries
 
-let mirrorLine line =
-    line +
-    "__"
+let mirrorLine (line: string) =
+    // let result =
+    //     line.Split ""
+    //     |> Array.toList
+    //     |> mirror
+    //     |> String.concat ""
+    // printfn "MIRRORLINE : %A" result
+    // result
+
+    let explode s =
+        [for c in s -> c]
+    
+    let convertToStringList input =
+        explode input 
+        |> Seq.map (fun x -> x.ToString()) 
+        |> Seq.toList
+    
+    let result =
+        line
+        |> convertToStringList
+        |> mirror
+        |> String.concat ""
+    // printfn "%s" result
+    result
+
+    // line +
+    // "__"
+
 
 let getDiamond input =
     
