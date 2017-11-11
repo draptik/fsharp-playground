@@ -85,3 +85,6 @@ let ``mirror the given entries`` () =
         "A"; 
         "B"; 
         "A"]                
+
+let ``mirror the given line`` () =
+    mirrorLine "__A" |> should equal "__A__"
