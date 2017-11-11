@@ -24,8 +24,10 @@ let dashes (num: int) =
 
 let getDiamond input =
     let strangeMagicNumber = 2
+    let characters = [ "A"; "B"; "C"]
+    
     let upperLeft = 
-        [ "A"; "B"; "C"]
+        characters
         |> List.mapi (fun index character -> 
             dashes (strangeMagicNumber - index) + character + dashes (index))
 
