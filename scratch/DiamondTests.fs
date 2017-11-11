@@ -5,9 +5,9 @@ open Xunit
 
 let mirror (upperHalf: string list) =
     let lowerHalf =
-        upperHalf.[..1]
+        upperHalf.[..(upperHalf.Length - 2)]
         |> List.rev
-    
+
     List.append upperHalf lowerHalf
 
 let getDiamond input =
