@@ -2,6 +2,7 @@ module DiamondTests
 
 open FsUnit
 open Xunit
+open FsUnit.CustomMatchers
 
 let mirror (entries: string list) =
     let mirroredEntries =
@@ -111,3 +112,9 @@ let ``mirror the given line`` () =
 let ``generate expected number of dashes`` () =
     dashes 2 |> should equal "__"
     dashes 4 |> should equal "____"
+
+[<Fact>]
+let ``calculate the distance from A`` () =
+    distanceFromA "A" |> should equal 0
+    distanceFromA "C" |> should equal 2
+    distanceFromA "Z" |> should equal 25
