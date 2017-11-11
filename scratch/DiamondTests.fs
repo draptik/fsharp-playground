@@ -4,12 +4,18 @@ open FsUnit
 open Xunit
 
 let getDiamond input =
-    List.append [
+    
+    let upperHalf = [
         "__A__"; 
         "_B_B_"; 
-        "C___C"] 
-        ["_B_B_"; 
+        "C___C"]
+    
+    let lowerHalf = [
+        "_B_B_"; 
         "__A__"]
+    
+    List.append upperHalf lowerHalf
+        
 
 [<Fact(Skip = "TODO")>]
 let ``generate a diamond for A`` () =
