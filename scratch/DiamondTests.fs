@@ -4,7 +4,7 @@ open FsUnit
 open Xunit
 open Diamond
 
-[<Fact(Skip = "TODO")>]
+[<Fact>]
 let ``generate a diamond for A`` () =
     getDiamond("A") |> should equal ["A"]
 
