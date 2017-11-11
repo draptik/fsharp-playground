@@ -23,11 +23,10 @@ let dashes (num: int) =
     String.replicate num "_"
 
 let getDiamond input =
-
     let upperLeft = 
-        [ dashes 2 + "A" + dashes 0; 
-          dashes 1 + "B" + dashes 1; 
-          dashes 0 + "C" + dashes 2]
+        [ dashes (2 - 0) + "A" + dashes (2 - 2); 
+          dashes (2 - 1) + "B" + dashes (2 - 1); 
+          dashes (2 - 2) + "C" + dashes (2 - 0)]
 
     let upperHalf = 
         upperLeft
