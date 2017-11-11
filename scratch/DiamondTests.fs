@@ -10,10 +10,13 @@ let mirror (entries: string list) =
 
     List.append entries mirroredEntries
 
+let mirrorLine =
+    "__A__"
+    
 let getDiamond input =
     
     let upperHalf = [
-        "__A__"; 
+        mirrorLine; 
         "_B_B_"; 
         "C___C"]
 
