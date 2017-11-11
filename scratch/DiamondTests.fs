@@ -33,11 +33,13 @@ let generateCharacterSequence (input: string) : string list =
 let makeLine index character =
     dashes ((distanceFromA "C") - index) + character + dashes (index)
 
+let makeUpperLeft =
+    generateCharacterSequence "C"
+    |> List.mapi makeLine
+
 let getDiamond input =
     
-    let upperLeft = 
-        generateCharacterSequence "C"
-        |> List.mapi makeLine
+    let upperLeft = makeUpperLeft
 
     let upperHalf = 
         upperLeft
