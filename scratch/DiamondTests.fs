@@ -23,10 +23,11 @@ let dashes (num: int) =
     String.replicate num "_"
 
 let getDiamond input =
+    let strangeMagicNumber = 2
     let upperLeft = 
         [ "A"; "B"; "C"]
         |> List.mapi (fun index character -> 
-            dashes (2 - index) + character + dashes (index))
+            dashes (strangeMagicNumber - index) + character + dashes (index))
 
     let upperHalf = 
         upperLeft
