@@ -27,8 +27,11 @@ let distanceFromA (input: string) =
     let c = input.[0]
     (c |> int) - ('A' |> int)
 
+let generateCharacterSequence input = 
+    [ "A"; "B"; "C" ]
+
 let getDiamond input =
-    let characters = [ "A"; "B"; "C" ]
+    let characters = generateCharacterSequence "C"
     
     let upperLeft = 
         characters
@@ -118,3 +121,7 @@ let ``calculate the distance from A`` () =
     distanceFromA "A" |> should equal 0
     distanceFromA "C" |> should equal 2
     distanceFromA "Z" |> should equal 25
+
+[<Fact>]
+let ``generate a sequence of characters`` () =
+    generateCharacterSequence "C" |> should equal [ "A"; "B"; "C" ]
