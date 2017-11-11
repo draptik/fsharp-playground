@@ -4,6 +4,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Diamond.fs" />
     <Compile Include="DiamondTests.fs" />
     <Compile Include="Tests.fs" />
     <Compile Include="Program.fs" />

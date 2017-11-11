@@ -2,48 +2,7 @@ module DiamondTests
 
 open FsUnit
 open Xunit
-
-let mirror (entries: string list) =
-    let mirroredEntries =
-        entries.[..(entries.Length - 2)]
-        |> List.rev
-
-    List.append entries mirroredEntries
-
-let mirrorLine (line: string) =
-
-    line
-    |> (fun s -> [for c in s -> c])
-    |> Seq.map (fun x -> x.ToString()) 
-    |> Seq.toList
-    |> mirror
-    |> String.concat ""
-
-let dashes (num: int) =
-    String.replicate num "_"
-
-let distanceFromA (input: string) = 
-    let c = input.[0]
-    (c |> int) - ('A' |> int)
-
-let generateCharacterSequence offsetFromA = 
-    ['A'..(offsetFromA + ('A' |> int) |> char)] 
-    |> List.map string
-
-let makeLine index character =
-    dashes ((distanceFromA "C") - index) + character + dashes (index)
-
-let makeUpperLeft input =
-    generateCharacterSequence input
-    |> List.mapi makeLine
-
-let makeUpperHalf distance =
-    makeUpperLeft distance
-    |> List.map mirrorLine
-
-let getDiamond input =
-
-    mirror(makeUpperHalf (distanceFromA "C"))
+open Diamond
 
 [<Fact(Skip = "TODO")>]
 let ``generate a diamond for A`` () =
