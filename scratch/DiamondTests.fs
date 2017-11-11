@@ -20,7 +20,7 @@ let mirrorLine (line: string) =
     |> String.concat ""
 
 let dashes (num: int) =
-    "__"
+    String.replicate num "_"
 
 let getDiamond input =
 
