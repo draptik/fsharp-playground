@@ -39,6 +39,8 @@ let makeUpperHalf distance =
     |> List.map mirrorLine
 
 let getDiamond input =
-
-    mirror(makeUpperHalf (distanceFromA "C"))
+    
+    distanceFromA "C"
+    |> makeUpperHalf
+    |> mirror
 
