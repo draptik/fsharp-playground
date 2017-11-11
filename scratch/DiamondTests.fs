@@ -22,9 +22,9 @@ let mirrorLine (line: string) =
 let dashes (num: int) =
     String.replicate num "_"
 
-let distanceFromA = 
-    ('C' |> int) - ('A' |> int)
-    // 2
+let distanceFromA (input: string) = 
+    let c = input.[0]
+    (c |> int) - ('A' |> int)
 
 let getDiamond input =
     let characters = [ "A"; "B"; "C" ]
@@ -32,7 +32,7 @@ let getDiamond input =
     let upperLeft = 
         characters
         |> List.mapi (fun index character -> 
-            dashes (distanceFromA - index) + character + dashes (index))
+            dashes ((distanceFromA "C") - index) + character + dashes (index))
 
     let upperHalf = 
         upperLeft
