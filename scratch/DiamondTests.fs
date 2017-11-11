@@ -12,11 +12,11 @@ let getDiamond input =
         "__A__"]
 
 [<Fact(Skip = "TODO")>]
-let ``Diamond A should return correct diamond`` () =
+let ``generate a diamond for A`` () =
     getDiamond('A') |> should equal ["A"]
 
 [<Fact(Skip = "TODO")>]
-let ``Diamond B should return correct diamond`` () =
+let ``generate a diamond for B`` () =
     getDiamond('B') 
     |> should equal [
         "_A_"; 
@@ -24,7 +24,7 @@ let ``Diamond B should return correct diamond`` () =
         "_A_"]
 
 [<Fact>]
-let ``Diamond C should return correct diamond`` () =
+let ``generate a diamond for C`` () =
     getDiamond('C') 
     |> should equal [
         "__A__"; 
