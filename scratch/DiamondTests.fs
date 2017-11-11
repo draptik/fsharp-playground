@@ -43,9 +43,7 @@ let makeUpperHalf distance =
 
 let getDiamond input =
 
-    let distance = distanceFromA "C"
-
-    mirror(makeUpperHalf distance)
+    mirror(makeUpperHalf (distanceFromA "C"))
 
 [<Fact(Skip = "TODO")>]
 let ``generate a diamond for A`` () =
