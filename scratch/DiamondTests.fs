@@ -31,10 +31,9 @@ let generateCharacterSequence (input: string) : string list =
     |> List.map string
 
 let getDiamond input =
-    let characters = generateCharacterSequence "C"
     
     let upperLeft = 
-        characters
+        generateCharacterSequence "C"
         |> List.mapi (fun index character -> 
             dashes ((distanceFromA "C") - index) + character + dashes (index))
 
