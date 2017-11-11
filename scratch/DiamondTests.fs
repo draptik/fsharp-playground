@@ -22,12 +22,20 @@ let mirrorLine (line: string) =
 
 let getDiamond input =
     
-    let upperHalf = [
-        mirrorLine "__A"; 
-        "_B_B_"; 
-        "C___C"]
-
+    let upperHalf = 
+        [ "__A"; 
+          "_B_"; 
+          "C__"] 
+        |> List.map mirrorLine
+    
     mirror(upperHalf)
+
+    // let upperHalf = [
+    //     mirrorLine "__A"; 
+    //     "_B_B_"; 
+    //     "C___C"]
+
+    // mirror(upperHalf)
         
 
 [<Fact(Skip = "TODO")>]
