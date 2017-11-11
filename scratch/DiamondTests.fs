@@ -21,7 +21,6 @@ let mirrorLine (line: string) =
     |> String.concat ""
 
 let getDiamond input =
-    
     let upperHalf = 
         [ "__A"; 
           "_B_"; 
@@ -29,14 +28,6 @@ let getDiamond input =
         |> List.map mirrorLine
     
     mirror(upperHalf)
-
-    // let upperHalf = [
-    //     mirrorLine "__A"; 
-    //     "_B_B_"; 
-    //     "C___C"]
-
-    // mirror(upperHalf)
-        
 
 [<Fact(Skip = "TODO")>]
 let ``generate a diamond for A`` () =
