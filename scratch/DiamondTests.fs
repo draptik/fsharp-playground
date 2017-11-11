@@ -22,8 +22,10 @@ let mirrorLine (line: string) =
 let dashes (num: int) =
     String.replicate num "_"
 
+let distanceFromA = 
+    2
+
 let getDiamond input =
-    let distanceFromA = 2
     let characters = [ "A"; "B"; "C"]
     
     let upperLeft = 
