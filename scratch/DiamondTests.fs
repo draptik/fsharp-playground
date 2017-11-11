@@ -26,23 +26,22 @@ let distanceFromA (input: string) =
     let c = input.[0]
     (c |> int) - ('A' |> int)
 
-let generateCharacterSequence (input: string) : string list = 
-    ['A'..(distanceFromA input + ('A' |> int) |> char)] 
+let generateCharacterSequence offsetFromA = 
+    ['A'..(offsetFromA + ('A' |> int) |> char)] 
     |> List.map string
 
 let makeLine index character =
     dashes ((distanceFromA "C") - index) + character + dashes (index)
 
-let makeUpperLeft =
-    generateCharacterSequence "C"
+let makeUpperLeft input =
+    generateCharacterSequence input
     |> List.mapi makeLine
 
 let getDiamond input =
-    
-    let upperLeft = makeUpperLeft
+    let distance = distanceFromA "C"
 
     let upperHalf = 
-        upperLeft
+        makeUpperLeft distance
         |> List.map mirrorLine
     
     mirror(upperHalf)
@@ -127,5 +126,5 @@ let ``calculate the distance from A`` () =
 
 [<Fact>]
 let ``generate a sequence of characters`` () =
-    generateCharacterSequence "A" |> should equal [ "A" ]
-    generateCharacterSequence "C" |> should equal [ "A"; "B"; "C" ]
+    generateCharacterSequence 0 |> should equal [ "A" ]
+    generateCharacterSequence 2 |> should equal [ "A"; "B"; "C" ]
