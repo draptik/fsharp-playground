@@ -3,18 +3,21 @@ module DiamondTests
 open FsUnit
 open Xunit
 
+let mirror upperHalf =
+    let lowerHalf = [
+        "_B_B_"; 
+        "__A__"]
+    
+    List.append upperHalf lowerHalf
+
 let getDiamond input =
     
     let upperHalf = [
         "__A__"; 
         "_B_B_"; 
         "C___C"]
-    
-    let lowerHalf = [
-        "_B_B_"; 
-        "__A__"]
-    
-    List.append upperHalf lowerHalf
+
+    mirror(upperHalf)
         
 
 [<Fact(Skip = "TODO")>]
