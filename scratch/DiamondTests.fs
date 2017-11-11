@@ -124,4 +124,5 @@ let ``calculate the distance from A`` () =
 
 [<Fact>]
 let ``generate a sequence of characters`` () =
+    generateCharacterSequence "A" |> should equal [ "A" ]
     generateCharacterSequence "C" |> should equal [ "A"; "B"; "C" ]
