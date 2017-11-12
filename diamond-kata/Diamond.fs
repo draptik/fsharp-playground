@@ -8,7 +8,6 @@ let mirror (entries: string list) =
     List.append entries mirroredEntries
 
 let mirrorLine (line: string) =
-
     line
     |> (fun s -> [for c in s -> c])
     |> Seq.map (fun x -> x.ToString()) 
@@ -27,9 +26,6 @@ let generateCharacterSequence offsetFromA =
     ['A'..(offsetFromA + ('A' |> int) |> char)] 
     |> List.map string
 
-// let makeLine index character =
-//     dashes ((distanceFromA "C") - index) + character + dashes (index)
-
 let makeUpperLeft posInAlphabet : string list =
     generateCharacterSequence posInAlphabet
     |> List.mapi (fun index c -> dashes (posInAlphabet - index) + c)
@@ -45,4 +41,3 @@ let getDiamond letter =
         distanceFromA letter
         |> makeUpperHalf
         |> mirror
-
