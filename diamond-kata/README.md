@@ -1,7 +1,7 @@
 # Initial setup
 
-- `dotnet new xunit -lang f# -o scratch`
-- `cd scratch`
+- `dotnet new xunit -lang f# -o diamond-kata`
+- `cd diamond-kata`
 - `dotnet add package fsunit`
 - `dotnet add package fsunit.xunit`
 - `dotnet restore`
@@ -25,8 +25,9 @@ The complete `fsproj` now looks like this:
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Diamond.fs" />
+    <Compile Include="DiamondTests.fs" />
     <Compile Include="Tests.fs" />
-    <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="fsunit" Version="3.0.0" />

@@ -7,7 +7,6 @@
     <Compile Include="Diamond.fs" />
     <Compile Include="DiamondTests.fs" />
     <Compile Include="Tests.fs" />
-    <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="fsunit" Version="3.0.0" />
