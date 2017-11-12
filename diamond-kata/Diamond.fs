@@ -15,7 +15,7 @@ let mirrorLine (line: string) =
     |> mirror
     |> String.concat ""
 
-let dashes (num: int) =
+let dashes num =
     String.replicate num "_"
 
 let distanceFromA (input: string) = 
