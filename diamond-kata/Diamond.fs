@@ -36,8 +36,9 @@ let makeUpperHalf distance =
     |> List.map mirrorLine
 
 let getDiamond letter =
-    if letter = "A" then ["A"]
-    else
+    match letter with
+    | "A" -> ["A"]
+    | _ ->
         distanceFromA letter
         |> makeUpperHalf
         |> mirror
