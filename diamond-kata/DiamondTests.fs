@@ -43,28 +43,11 @@ let ``mirror the upper half`` () =
 
 [<Fact>]
 let ``mirror the given entries`` () =
-    mirror(
-        [
-        "A"; 
-        "B"; 
-        "C"
-        ])
-    |> should equal [
-        "A"; 
-        "B"; 
-        "C"; 
-        "B"; 
-        "A"]        
+    mirror([ "A"; "B"; "C" ])
+    |> should equal [ "A"; "B"; "C"; "B"; "A"]        
 
-    mirror(
-        [
-        "A"; 
-        "B"
-        ])
-    |> should equal [
-        "A"; 
-        "B"; 
-        "A"]                
+    mirror([ "A"; "B" ])
+    |> should equal [ "A"; "B"; "A"]                
 
 [<Fact>]
 let ``mirror the given line`` () =
