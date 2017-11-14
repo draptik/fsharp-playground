@@ -1,11 +1,8 @@
 module Diamond
 
 let mirror (entries: string list) =
-    let mirroredEntries =
-        entries.[..(entries.Length - 2)]
-        |> List.rev
-
-    List.append entries mirroredEntries
+    entries
+    @ (entries |> List.rev |> List.tail)
 
 let mirrorLine (line: string) =
     line
@@ -28,9 +25,6 @@ let makeUpperHalf distance =
     |> List.map mirrorLine
 
 let getDiamond letter =
-    match letter with
-    | "A" -> ["A"]
-    | _ ->
-        distanceFromA letter
-        |> makeUpperHalf
-        |> mirror
+    distanceFromA letter
+    |> makeUpperHalf
+    |> mirror
