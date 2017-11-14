@@ -18,8 +18,7 @@ let dashes num =
     String.replicate num "_"
 
 let distanceFromA (input: string) = 
-    let c = input.[0]
-    (c |> int) - ('A' |> int)
+    (Seq.head input |> int) - ('A' |> int)
 
 let makeUpperHalf distance =
     ['A'..(distance + ('A' |> int) |> char)] 
