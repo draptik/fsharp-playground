@@ -24,8 +24,8 @@ let distanceFromA (input: string) =
 let makeUpperHalf distance =
     ['A'..(distance + ('A' |> int) |> char)] 
     |> List.map string
-    |> List.mapi (fun index c -> dashes (distance - index) + c)
-    |> List.mapi (fun index c -> c + dashes (index))
+    |> List.mapi (fun index firstHalf -> dashes (distance - index) + firstHalf)
+    |> List.mapi (fun index secondHalf -> secondHalf + dashes (index))
     |> List.map mirrorLine
 
 let getDiamond letter =
