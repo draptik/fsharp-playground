@@ -22,10 +22,6 @@ let distanceFromA (input: string) =
     let c = input.[0]
     (c |> int) - ('A' |> int)
 
-let generateCharacterSequence offsetFromA = 
-    ['A'..(offsetFromA + ('A' |> int) |> char)] 
-    |> List.map string
-
 let makeUpperHalf distance =
     ['A'..(distance + ('A' |> int) |> char)] 
     |> List.map string
