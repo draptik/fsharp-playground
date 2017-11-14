@@ -26,13 +26,11 @@ let generateCharacterSequence offsetFromA =
     ['A'..(offsetFromA + ('A' |> int) |> char)] 
     |> List.map string
 
-let makeUpperLeft posInAlphabet : string list =
-    generateCharacterSequence posInAlphabet
-    |> List.mapi (fun index c -> dashes (posInAlphabet - index) + c)
-    |> List.mapi (fun index c -> c + dashes (index))
-
 let makeUpperHalf distance =
-    makeUpperLeft distance
+    ['A'..(distance + ('A' |> int) |> char)] 
+    |> List.map string
+    |> List.mapi (fun index c -> dashes (distance - index) + c)
+    |> List.mapi (fun index c -> c + dashes (index))
     |> List.map mirrorLine
 
 let getDiamond letter =
