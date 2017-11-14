@@ -9,8 +9,7 @@ let mirror (entries: string list) =
 
 let mirrorLine (line: string) =
     line
-    |> (fun s -> [for c in s -> c])
-    |> Seq.map (fun x -> x.ToString()) 
+    |> Seq.map string
     |> Seq.toList
     |> mirror
     |> String.concat ""
