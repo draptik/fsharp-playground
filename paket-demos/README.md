@@ -77,7 +77,24 @@ Start with a normal setup. 2 class library projects (.NET 4.7). Add Newtonsoft v
 
 - Copy `paket.exe` next to the solution file.
 - Delete entire `packages` folder (!)
+- CLI: run `paket.exe convert-from-nuget` (see sample output below)
 
+The previous command does all the heavy lifting (git status):
+
+```
+modified:   SomeApp.sln
+modified:   SomeLib1/SomeLib1.csproj
+deleted:    SomeLib1/packages.config
+modified:   SomeLib2/SomeLib2.csproj
+deleted:    SomeLib2/packages.config
+
+Untracked files:
+
+SomeLib1/paket.references
+SomeLib2/paket.references
+paket.dependencies
+paket.lock
+```
 
 ## Paket resources
 
@@ -188,4 +205,39 @@ Performance:
  - Average Request Time: 741 milliseconds
  - Number of Requests: 84
  - Runtime: 39 seconds
+```
+
+### Converting from NuGet Output
+
+```
+$ ./paket.exe convert-from-nuget
+Paket version 5.125.6
+Local NuGet feed doesn't exist: C:\projects\_playground\NugetDemo2.
+Adding package Newtonsoft.Json to C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeLib1\paket.references into group Main
+Adding package Newtonsoft.Json to C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeLib2\paket.references into group Main
+Removing C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeLib1\packages.config
+Removing C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeLib2\packages.config
+Dependencies files saved to C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\paket.dependencies
+References file saved to C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeLib1\paket.references
+References file saved to C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeLib2\paket.references
+Solution C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\SomeApp.sln changed
+Resolving packages for group Main:
+ - Newtonsoft.Json is pinned to 10.0.3
+Locked version resolution written to C:\projects\_playground\fsharp-playground\paket-demos\demo4\SomeApp\paket.lock
+Installing into projects:
+ - Creating model and downloading packages.
+Downloading Newtonsoft.Json 10.0.3
+ - SomeLib1/paket.references -> SomeLib1/SomeLib1.csproj
+ - SomeLib2/paket.references -> SomeLib2/SomeLib2.csproj
+Performance:
+ - Resolver: 2 seconds (1 runs)
+    - Runtime: 90 milliseconds
+    - Blocked (retrieving package details): 1 second (1 times)
+    - Blocked (retrieving package versions): 833 milliseconds (1 times)
+ - Disk IO: 268 milliseconds
+ - Average Download Time: 697 milliseconds
+ - Number of downloads: 1
+ - Average Request Time: 555 milliseconds
+ - Number of Requests: 3
+ - Runtime: 5 seconds
 ```

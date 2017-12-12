@@ -1,0 +1,4 @@
+source C:\projects\_playground\NugetDemo2
+source https://api.nuget.org/v3/index.json
+
+nuget Newtonsoft.Json 10.0.3 restriction: >= net47
