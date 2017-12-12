@@ -79,8 +79,7 @@ Start with a normal setup. 2 class library projects (.NET 4.7). Add Newtonsoft v
 - Delete entire `packages` folder (!)
 - CLI: run `paket.exe convert-from-nuget` (see sample output below)
 
-The previous command does all the heavy lifting (git status):
-
+The previous command does all the heavy lifting (`git status`):
 ```
 modified:   SomeApp.sln
 modified:   SomeLib1/SomeLib1.csproj
@@ -95,6 +94,21 @@ SomeLib2/paket.references
 paket.dependencies
 paket.lock
 ```
+
+- `./paket.exe simplify`
+
+## Paket commands
+
+- `paket update`
+- `paket restore`
+- `paket add`: Example usage: `paket add nuget Automapper project SomeLib1`
+
+## Plugins
+
+https://fsprojects.github.io/Paket/editor-support.html
+
+- Visual Studio: https://github.com/fsprojects/Paket.VisualStudio (install via `Extensions and Updates`) 
+- VS Code: https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-Paket
 
 ## Paket resources
 
