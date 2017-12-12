@@ -1,0 +1,1 @@
+- demo1/SomeLib: .NET Core project with NuGet dependency on Newtonsoft.Json (see csproj file)

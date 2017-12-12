@@ -1,4 +1,4 @@
-# Paket - an alternative to Nuget?
+# Paket - an alternative to NuGet?
 
 - [https://fsprojects.github.io/Paket/](Official Paket website)
 - [https://dotnetmeditations.com/blog/2014/10/22/introduction-to-paket](Introduction to PAKET)
@@ -6,8 +6,17 @@
 - [https://www.infoq.com/news/2016/01/paket-package-manager](Introducing Paket, a Package Manager for .NET)
 - [http://krishnabhargav.github.io/paket/2015/02/23/Hello-World-Paket.html](Using Paket - a very simple introduction)
 
+
 ## What is Paket?
 
-- Complete replacement for Nuget (!)
-- Can still use Nuget Repos
-- Can also use other sources (Github, Git repos)
+- Complete replacement for NuGet (!)
+- Can still use NuGet repositories
+- Can also use other sources (Github, Git repositories)
+
+## Setup
+
+### Sample 1: .NET Core, without NuGet, CLI
+
+Note to self: .NET Core/NuGet projects normally do not have a `package.config` file for NuGet: Instead there is a `PackageReference` attribute in the `csproj` file (see https://docs.microsoft.com/en-us/nuget/what-is-nuget#tracking-references-and-restoring-packages for details).
+
+### Sample 2: .NET 4.7, Migration from NuGet, Visual Studio
