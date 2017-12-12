@@ -1,0 +1,4 @@
+
+HTTP
+  remote: file://
+    Bla.cs (/c:/projects/_playground/fsharp-playground/paket-demos/demo5/Bla.cs)

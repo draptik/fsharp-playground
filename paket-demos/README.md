@@ -17,6 +17,8 @@
 
 ### Sample 1: .NET Core, with NuGet, CLI
 
+(see demo1)
+
 Setup:
 
 - `dotnet new classlib -o SomeLib`
@@ -30,6 +32,8 @@ Setup:
 Note to self: .NET Core/NuGet projects normally do not have a `package.config` file for NuGet: Instead there is a `PackageReference` attribute in the `csproj` file (see https://docs.microsoft.com/en-us/nuget/what-is-nuget#tracking-references-and-restoring-packages for details).
 
 ### Sample 2: .NET Core, without NuGet, CLI
+
+(see demo2)
 
 Setup (manual):
 
@@ -58,6 +62,8 @@ Note: The last command modifies the `csproj` file by adding the following snippe
 ```
 ### Sample 3: .NET Core solution with multiple projects, without NuGet, CLI
 
+(see demo3)
+
 - `dotnet new sln -n SomeApp`
 - `dotnet new classlib -o SomeLib1`
 - `dotnet new classlib -o SomeLib2`
@@ -72,6 +78,8 @@ Note: The last command modifies the `csproj` file by adding the following snippe
 
 
 ### Sample 4: .NET 4.7, Migration from NuGet, Visual Studio
+
+(see demo4)
 
 Start with a normal setup. 2 class library projects (.NET 4.7). Add Newtonsoft via NuGet to both projects.
 
@@ -109,6 +117,30 @@ https://fsprojects.github.io/Paket/editor-support.html
 
 - Visual Studio: https://github.com/fsprojects/Paket.VisualStudio (install via `Extensions and Updates`) 
 - VS Code: https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-Paket
+
+## Referencing non NuGet "things"
+
+### Referencing source files
+
+(see demo5)
+
+`paket.dependencies`:
+```
+http file:///c:/projects/_playground/fsharp-playground/paket-demos/demo5/Bla.cs
+```
+
+Result is located in `paket-files/localhost/Bla.cs` and can be referenced from `Class1.cs`.
+
+### Referencing git repository
+
+(see demo5)
+
+`paket.dependencies`:
+```
+git https://github.com/draptik/dotnetcore-fsharp-hello-world.git
+```
+
+Repository will be cloned and placed in `paket-files/<top-level-domain>/` (i.e. `paket-files\github.com\draptik\dotnetcore-fsharp-hello-world`).
 
 ## Paket resources
 

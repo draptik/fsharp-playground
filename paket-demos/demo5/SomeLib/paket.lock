@@ -1,0 +1,7 @@
+
+HTTP
+  remote: file://
+    Bla.cs (/c:/projects/_playground/fsharp-playground/paket-demos/demo5/Bla.cs)
+GIT
+  remote: https://github.com/draptik/dotnetcore-fsharp-hello-world.git
+     (312b4c83eef271c2ff723b778c24a0f138ac1891)
