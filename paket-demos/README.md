@@ -15,8 +15,26 @@
 
 ## Setup
 
-### Sample 1: .NET Core, without NuGet, CLI
+### Sample 1: .NET Core, with NuGet, CLI
+
+Setup:
+
+- `dotnet new classlib -o SomeLib`
+- manually added dependency to `csproj` file:
+```xml
+<ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3"/>
+</ItemGroup>
+```
 
 Note to self: .NET Core/NuGet projects normally do not have a `package.config` file for NuGet: Instead there is a `PackageReference` attribute in the `csproj` file (see https://docs.microsoft.com/en-us/nuget/what-is-nuget#tracking-references-and-restoring-packages for details).
 
-### Sample 2: .NET 4.7, Migration from NuGet, Visual Studio
+### Sample 2: .NET Core, without NuGet, CLI
+
+
+
+### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
+
+## Paket resources
+
+https://github.com/fsprojects/Paket/releases/latest -> download `paket.bootstrapper.exe`.
