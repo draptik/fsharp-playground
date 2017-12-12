@@ -37,8 +37,13 @@ Setup (manual):
 - `cd SomeLib`
 - `mkdir .paket`
 - `cp ../../paket.bootstrapper.exe .paket/paket.exe`
+- create `paket.dependencies` file with the following content:
+```
+source https://nuget.org/api/v2
 
-
+nuget Newtonsoft.Json
+```
+- install dependencies: `.paket/paket.exe install`
 
 ### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
 
