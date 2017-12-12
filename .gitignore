@@ -1,3 +1,5 @@
 bin
 obj
 *~
+paket-demos/demo4/SomeApp/.vs
+*.user
