@@ -56,9 +56,22 @@ Note: The last command modifies the `csproj` file by adding the following snippe
 ```xml
 <Import Project=".paket\Paket.Restore.targets" />
 ```
+### Sample 3: .NET Core solution with multiple projects, without NuGet, CLI
+
+- `dotnet new sln -n SomeApp`
+- `dotnet new classlib -o SomeLib1`
+- `dotnet new classlib -o SomeLib2`
+- `dotnet sln add SomeLib1/SomeLib1.csproj`
+- `dotnet sln add SomeLib2/SomeLib2.csproj`
+- `mkdir .paket`
+- `cp ../paket.bootstrapper.exe .paket/paket.exe`
+- create `paket.dependencies` referencing Newtonsoft.Json
+- install dependencies: `.paket/paket.exe install`
+- create `paket.references` referencing Newtonsoft.Json
+- run `.paket/paket.exe install`
 
 
-### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
+### Sample 4: .NET 4.7, Migration from NuGet, Visual Studio
 
 ## Paket resources
 
