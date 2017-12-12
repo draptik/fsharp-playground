@@ -28,3 +28,5 @@ printfn "test"
 ```
 
 - `fake run build.fsx`
+
+Another thread: https://github.com/fsharp/FAKE/issues/1722
