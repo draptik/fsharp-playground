@@ -50,8 +50,12 @@ nuget Newtonsoft.Json
 Newtonsoft.Json
 ```
 - add `paket.references` to version control
+- run `.paket/paket.exe install` again (this step maps the previously downloaded dependency to the actual project)
 
-
+Note: The last command modifies the `csproj` file by adding the following snippet:
+```xml
+<Import Project=".paket\Paket.Restore.targets" />
+```
 
 
 ### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
