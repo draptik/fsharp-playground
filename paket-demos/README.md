@@ -43,10 +43,117 @@ source https://nuget.org/api/v2
 
 nuget Newtonsoft.Json
 ```
-- install dependencies: `.paket/paket.exe install`
+- install dependencies: `.paket/paket.exe install` (see Installing Newtonsoft below)
 
 ### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
 
 ## Paket resources
 
 https://github.com/fsprojects/Paket/releases/latest -> download `paket.bootstrapper.exe`.
+
+## Sample outputs
+
+### Installing Newtonsoft
+```
+$ .paket/paket.exe install
+Paket version 5.125.6
+Resolving packages for group Main:
+ - Newtonsoft.Json 10.0.3
+ - Microsoft.CSharp 4.4.0
+ - System.ComponentModel.TypeConverter 4.3.0
+ - System.Runtime.Serialization.Formatters 4.3.0
+ - System.Runtime.Serialization.Primitives 4.3.0
+ - System.Xml.XmlDocument 4.3.0
+ - NETStandard.Library 2.0.1
+ - System.Net.Http 4.3.3
+ - System.Dynamic.Runtime 4.3.0
+ - System.Reflection.TypeExtensions 4.4.0
+ - Microsoft.Win32.Primitives 4.3.0
+ - System.AppContext 4.3.0
+ - System.Collections 4.3.0
+ - System.Collections.Concurrent 4.3.0
+ - System.Console 4.3.0
+ - System.Diagnostics.Debug 4.3.0
+ - System.Diagnostics.Tools 4.3.0
+ - System.Diagnostics.Tracing 4.3.0
+ - System.Globalization 4.3.0
+ - System.Globalization.Calendars 4.3.0
+ - System.IO 4.3.0
+ - System.IO.Compression 4.3.0
+ - System.IO.Compression.ZipFile 4.3.0
+ - System.IO.FileSystem 4.3.0
+ - System.IO.FileSystem.Primitives 4.3.0
+ - System.Linq 4.3.0
+ - System.Linq.Expressions 4.3.0
+ - System.Net.Primitives 4.3.0
+ - System.Net.Sockets 4.3.0
+ - System.ObjectModel 4.3.0
+ - System.Reflection 4.3.0
+ - System.Reflection.Extensions 4.3.0
+ - System.Reflection.Primitives 4.3.0
+ - System.Resources.ResourceManager 4.3.0
+ - System.Runtime 4.3.0
+ - System.Runtime.Extensions 4.3.0
+ - System.Runtime.Handles 4.3.0
+ - System.Runtime.InteropServices 4.3.0
+ - System.Runtime.InteropServices.RuntimeInformation 4.3.0
+ - System.Runtime.Numerics 4.3.0
+ - System.Security.Cryptography.Algorithms 4.3.1
+ - System.Security.Cryptography.Encoding 4.3.0
+ - System.Security.Cryptography.Primitives 4.3.0
+ - System.Security.Cryptography.X509Certificates 4.3.2
+ - System.Text.Encoding 4.3.0
+ - System.Text.Encoding.Extensions 4.3.0
+ - System.Text.RegularExpressions 4.3.0
+ - System.Threading 4.3.0
+ - System.Threading.Tasks 4.3.0
+ - System.Threading.Timer 4.3.0
+ - System.Xml.ReaderWriter 4.3.0
+ - System.Xml.XDocument 4.3.0
+ - System.Collections.NonGeneric 4.3.0
+ - System.Collections.Specialized 4.3.0
+ - System.ComponentModel 4.3.0
+ - System.ComponentModel.Primitives 4.3.0
+ - Microsoft.NETCore.Platforms 2.0.1
+ - runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.native.System.Security.Cryptography.Apple 4.3.1
+ - System.Globalization.Extensions 4.3.0
+ - System.Reflection.Emit 4.3.0
+ - System.Reflection.Emit.ILGeneration 4.3.0
+ - runtime.native.System 4.3.0
+ - runtime.native.System.IO.Compression 4.3.1
+ - System.Buffers 4.4.0
+ - System.Reflection.Emit.Lightweight 4.3.0
+ - runtime.native.System.Net.Http 4.3.0
+ - System.Diagnostics.DiagnosticSource 4.4.1
+ - System.Security.Cryptography.OpenSsl 4.4.0
+ - System.Security.Cryptography.Cng 4.4.0
+ - System.Security.Cryptography.Csp 4.3.0
+ - System.Threading.Tasks.Extensions 4.4.0
+ - Microsoft.NETCore.Targets 2.0.0
+ - runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.2
+ - runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple 4.3.1
+Locked version resolution written to C:\projects\_playground\fsharp-playground\paket-demos\demo2\paket.lock
+Installing into projects:
+ - Creating model and downloading packages.
+Performance:
+ - Resolver: 27 seconds (1 runs)
+    - Runtime: 18 seconds
+    - Blocked (retrieving package details): 5 seconds (34 times)
+    - Blocked (retrieving package versions): 3 seconds (6 times)
+    - Not Blocked (retrieving package details): 50 times
+    - Not Blocked (retrieving package versions): 78 times
+ - Disk IO: 2 minutes, 11 seconds
+ - Average Request Time: 741 milliseconds
+ - Number of Requests: 84
+ - Runtime: 39 seconds
+```
