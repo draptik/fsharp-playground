@@ -67,7 +67,7 @@ Note: The last command modifies the `csproj` file by adding the following snippe
 - `cp ../paket.bootstrapper.exe .paket/paket.exe`
 - create `paket.dependencies` referencing Newtonsoft.Json
 - install dependencies: `.paket/paket.exe install`
-- create `paket.references` referencing Newtonsoft.Json
+- create `paket.references` in each project (referencing Newtonsoft.Json)
 - run `.paket/paket.exe install`
 
 
