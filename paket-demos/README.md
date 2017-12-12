@@ -31,7 +31,9 @@ Note to self: .NET Core/NuGet projects normally do not have a `package.config` f
 
 ### Sample 2: .NET Core, without NuGet, CLI
 
+Setup:
 
+- `dotnet new classlib -o SomeLib`
 
 ### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
 
