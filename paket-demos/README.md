@@ -73,6 +73,12 @@ Note: The last command modifies the `csproj` file by adding the following snippe
 
 ### Sample 4: .NET 4.7, Migration from NuGet, Visual Studio
 
+Start with a normal setup. 2 class library projects (.NET 4.7). Add Newtonsoft via NuGet to both projects.
+
+- Copy `paket.exe` next to the solution file.
+- Delete entire `packages` folder (!)
+
+
 ## Paket resources
 
 https://github.com/fsprojects/Paket/releases/latest -> download `paket.bootstrapper.exe`.
