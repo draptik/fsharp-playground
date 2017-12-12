@@ -1,9 +1,9 @@
 # Paket - an alternative to NuGet?
 
-- [https://fsprojects.github.io/Paket/](Official Paket website)
-- [https://dotnetmeditations.com/blog/2014/10/22/introduction-to-paket](Introduction to PAKET)
-- [https://cockneycoder.wordpress.com/2017/08/07/getting-started-with-paket-part-1/](Getting Started with Paket – Part 1)
-- [https://www.infoq.com/news/2016/01/paket-package-manager](Introducing Paket, a Package Manager for .NET)
+- [Official Paket website](https://fsprojects.github.io/Paket/)
+- [Introduction to PAKET](https://dotnetmeditations.com/blog/2014/10/22/introduction-to-paket)
+- [Getting Started with Paket – Part 1](https://cockneycoder.wordpress.com/2017/08/07/getting-started-with-paket-part-1/)
+- [Introducing Paket, a Package Manager for .NET](https://www.infoq.com/news/2016/01/paket-package-manager)
 
 ## What is Paket?
 
