@@ -40,10 +40,19 @@ Setup (manual):
 - create `paket.dependencies` file with the following content:
 ```
 source https://nuget.org/api/v2
-
 nuget Newtonsoft.Json
 ```
 - install dependencies: `.paket/paket.exe install` (see Installing Newtonsoft below)
+- add `paket.lock` to version control
+- add `packages` folder to `.gitignore`
+- create `paket.references` with the following content:
+```
+Newtonsoft.Json
+```
+- add `paket.references` to version control
+
+
+
 
 ### Sample 3: .NET 4.7, Migration from NuGet, Visual Studio
 
