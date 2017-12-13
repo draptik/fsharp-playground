@@ -30,3 +30,14 @@ printfn "test"
 - `fake run build.fsx`
 
 Another thread: https://github.com/fsharp/FAKE/issues/1722
+
+## demo2
+
+Create 2 dotnet projects and a solution file:
+
+- `dotnet new console -o SomeAppConsole`
+- `dotnet new xunit -o SomeAppConsole.Tests`
+- `dotnet new sln -n SomeApp`
+- `dotnet sln add SomeAppConsole/SomeAppConsole.csproj`
+- `dotnet sln add SomeAppConsole.Tests/SomeAppConsole.Tests.csproj`
+- `dotnet add SomeAppConsole.Tests/SomeAppConsole.Tests.csproj reference SomeAppConsole/SomeAppConsole.csproj`
