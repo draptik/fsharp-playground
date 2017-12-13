@@ -3,3 +3,4 @@ obj
 *~
 paket-demos/demo4/SomeApp/.vs
 *.user
+fake-demos/demo2/packages/***

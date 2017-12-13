@@ -31,6 +31,9 @@ printfn "test"
 
 Another thread: https://github.com/fsharp/FAKE/issues/1722
 
+Another thread: https://github.com/fsharp/FAKE/issues/1744
+
+
 ## demo2
 
 Create 2 dotnet projects and a solution file:
@@ -41,3 +44,28 @@ Create 2 dotnet projects and a solution file:
 - `dotnet sln add SomeAppConsole/SomeAppConsole.csproj`
 - `dotnet sln add SomeAppConsole.Tests/SomeAppConsole.Tests.csproj`
 - `dotnet add SomeAppConsole.Tests/SomeAppConsole.Tests.csproj reference SomeAppConsole/SomeAppConsole.csproj`
+
+Add Paket for dependency management:
+
+- `mkdir .paket`
+- `cp ../paket-demos/paket.bootstrap.exe .paket/paket.exe`
+- `touch paket.dependencies`
+- `touch SomeAppConsole/paket.references`
+- `touch SomeAppConsole.Tests/paket.references`
+
+Content of `paket.depencies`:
+```
+source https://nuget.org/api/v2
+nuget Xunit
+nuget FluentAssertions
+```
+
+Content of `SomeAppConsole.Tests/paket.references`:
+```
+Xunit
+FluentAssertions
+```
+
+- `.paket/paket.exe install`
+- `dotnet test`
+
