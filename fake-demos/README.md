@@ -16,7 +16,7 @@ https://github.com/fsharp/FAKE/releases
 
 ## Hello World
 
-FAKE version 5 has support for .NET Core.
+FAKE version 5 is written in .NET Core.
 
 Documentation is a bit sketchy at the moment... (the example `build.fsx` file linked from the Getting started section has more than 1k LOC).
 
