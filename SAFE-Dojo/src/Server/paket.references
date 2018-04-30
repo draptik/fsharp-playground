@@ -1,0 +1,5 @@
+group Server
+Fable.JsonConverter
+FSharp.Data
+Saturn
+Microsoft.DotNet.Watcher.Tools
