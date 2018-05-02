@@ -41,6 +41,7 @@ type Msg =
     | PostcodeChanged of string
     | GotReport of Report
     | ErrorMsg of exn
+    | ClearResult
 
 /// The init function is called to start the message pump with an initial view.
 let init () = 
@@ -79,6 +80,7 @@ let update msg model =
                 if Validation.validatePostcode p then None
                 else Some "Invalid postcode." }, Cmd.none
     | _, ErrorMsg e -> { model with ServerState = ServerError e.Message }, Cmd.none
+    | _, ClearResult -> { model with Report = None }, Cmd.none
 
 [<AutoOpen>]
 module ViewParts =
@@ -188,8 +190,13 @@ let view model dispatch =
                                       Button.OnClick (fun _ -> dispatch GetReport)
                                       Button.Disabled (model.ValidationError.IsSome)
                                       Button.IsLoading (model.ServerState = ServerState.Loading) ]
-                                    [ str "Submit" ] ] ] ]
-
+                                    [ str "Submit" ] ]
+                            Level.item [] [
+                                Button.button
+                                    [ Button.Color IsPrimary
+                                      Button.OnClick (fun _ -> dispatch ClearResult)
+                                      Button.Disabled model.Report.IsNone ]
+                                    [ str "Clear Result" ] ] ] ]
                 ]
 
             match model with
