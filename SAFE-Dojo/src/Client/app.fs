@@ -51,7 +51,8 @@ let init () =
       ServerState = Idle }, Cmd.ofMsg (PostcodeChanged "")
 
 let getResponse postcode = promise {
-    let! location = Fetch.fetchAs<LocationResponse> (sprintf "/api/distance/%s" postcode) []
+    let! locationResponse = Fetch.postRecord "/api/distance" { Postcode = postcode } []
+    let! location = locationResponse.json<LocationResponse>()
     let! crimes = Fetch.tryFetchAs<CrimeResponse array> (sprintf "api/crime/%s" postcode) [] |> Promise.map (Result.defaultValue [||])
     let! weather = Fetch.fetchAs<WeatherResponse> (sprintf "api/weather/%s" postcode) []
     (* Task 4.5 WEATHER: Fetch the weather from the API endpoint you created.
