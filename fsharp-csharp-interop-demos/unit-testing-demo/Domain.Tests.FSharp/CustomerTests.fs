@@ -1,4 +1,4 @@
-module Tests
+module CustomerTests
 
 open FsUnit.Xunit
 open System
