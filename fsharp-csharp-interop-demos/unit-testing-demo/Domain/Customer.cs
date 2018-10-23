@@ -2,6 +2,10 @@
 {
     public class Customer
     {
+        public Customer()
+        {
+        }
+
         public Customer(int id, string firstName, string lastName)
         {
             Id = id;
