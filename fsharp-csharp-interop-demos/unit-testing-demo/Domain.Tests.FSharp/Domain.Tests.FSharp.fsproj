@@ -10,6 +10,7 @@
     <Compile Include="CustomerTests.fs" />
     <Compile Include="DalekTests.fs" />
     <Compile Include="EbayTests.fs" />
+    <Compile Include="FlowerServiceTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
