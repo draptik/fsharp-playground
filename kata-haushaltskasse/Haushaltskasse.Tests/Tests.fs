@@ -16,7 +16,6 @@ module Domain =
             | _ -> Ok number
         
         let value (Betrag int) = int
-open Domain
 
 [<Fact>]
 let ``My test`` () =
