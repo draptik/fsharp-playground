@@ -11,9 +11,9 @@ module Domain =
     module Betrag =
         let create (number: int) =
             match number with
-            | n when (n < 0) -> Error "Betrag darf nicht negativ sein!"
-            | n when (n > 1000) -> Error "Betraege groesser als 1000 sind nicht erlaubt!"
-            | _ -> Ok number
+            | n when (n < 0) -> failwith "Betrag darf nicht negativ sein!"
+            | n when (n > 1000) -> failwith "Betraege groesser als 1000 sind nicht erlaubt!"
+            | _ -> number
         
         let value (Betrag int) = int
 
@@ -28,5 +28,8 @@ let ``FsUnit Smoke Test`` () =
 [<Fact>]
 let ``Betrag kann nach Erstellung abgerufen werden`` () =
     let betrag = Domain.Betrag.create(10) // geht das auch einfacher?
-    betrag |> should equal Ok 10 // was ist hier falsch?
-    Assert.True(true)    
+    betrag |> should equal 10
+
+[<Fact>]
+let ``Betrag schmeisst Fehler, wenn kleiner 0`` () =
+    Domain.Betrag.create(-1) |> shouldFail
