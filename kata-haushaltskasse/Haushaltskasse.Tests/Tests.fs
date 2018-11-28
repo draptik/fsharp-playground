@@ -27,7 +27,7 @@ let ``FsUnit Smoke Test`` () =
     1 + 1 |> should equal 2
 
 [<Fact>]
-let ``Betrag kleiner 0 gibt Fehler`` () =
+let ``Betrag kann nach Erstellung abgerufen werden`` () =
     let betrag = Domain.Betrag.create(10) // geht das auch einfacher?
     betrag |> should equal Ok 10 // was ist hier falsch?
     Assert.True(true)    
