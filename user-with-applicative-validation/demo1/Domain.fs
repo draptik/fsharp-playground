@@ -4,7 +4,14 @@ open System
 open FsUnit.Xunit
 open Xunit
 
-type User = {
+type NonEmptyString = private NonEmptyString of string
+
+let create s =
+    match String.IsNullOrWhiteSpace(s) with
+    | true -> Error [ "String must not be empty" ]
+    | false -> Ok(NonEmptyString s)
+
+type UnvalidatedUser = {
     Id: int
     FirstName: string
     LastName: string
@@ -12,7 +19,15 @@ type User = {
     TwitterProfileUrl: string option
 }
 
-let format user =
+type ValidatedUser = {
+    Id: int
+    FirstName: NonEmptyString
+    LastName: string
+    Dob: DateTime option
+    TwitterProfileUrl: string option
+}
+
+let format (user : UnvalidatedUser) =
     let fieldSeparator = " "
     let dob =
         match user.Dob with
@@ -27,7 +42,7 @@ let format user =
     sprintf "%s %s%s%s" user.FirstName user.LastName dob twitter 
 
 
-let homer = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
+let homer : UnvalidatedUser = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
 
 [<Fact>]
 let ``Formatting user with minimal required info`` () =
