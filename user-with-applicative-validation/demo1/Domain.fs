@@ -1,6 +1,7 @@
 module demo1.Domain
 
 open System
+open FsUnit.Xunit
 open Xunit
 
 type User = {
@@ -27,27 +28,27 @@ let format user =
 
 [<Fact>]
 let ``Formatting user with minimal required info`` () =
-    let user = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
-    let actual = format user
-    Assert.Equal("Homer Simpson", actual)
+    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
+    |> format
+    |> should equal "Homer Simpson"
 
 [<Fact>]
 let ``Formatting user with Date of Birth`` () =
-    let user = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = None }
-    let actual = format user
-    Assert.Equal("Homer Simpson 1980-01-01", actual)
+    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = None }
+    |> format
+    |> should equal "Homer Simpson 1980-01-01"
 
 [<Fact>]
 let ``Formatting user with Twitter`` () =
-    let user = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
-    let actual = format user
-    Assert.Equal("Homer Simpson https://homer.simpson@twitter.com", actual)
+    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
+    |> format
+    |> should equal "Homer Simpson https://homer.simpson@twitter.com"
 
 [<Fact>]
 let ``Formatting user with Date of birth and Twitter`` () =
-    let user = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
-    let actual = format user
-    Assert.Equal("Homer Simpson 1980-01-01 https://homer.simpson@twitter.com", actual)
+    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
+    |> format
+    |> should equal "Homer Simpson 1980-01-01 https://homer.simpson@twitter.com"
 
 //
 //type AddressBook = {
