@@ -26,27 +26,30 @@ let format user =
         
     sprintf "%s %s%s%s" user.FirstName user.LastName dob twitter 
 
+
+let homer = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
+
 [<Fact>]
 let ``Formatting user with minimal required info`` () =
-    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
+    homer
     |> format
     |> should equal "Homer Simpson"
 
 [<Fact>]
 let ``Formatting user with Date of Birth`` () =
-    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = None }
+    { homer with Dob = Some (new DateTime(1980, 1, 1)) }
     |> format
     |> should equal "Homer Simpson 1980-01-01"
 
 [<Fact>]
 let ``Formatting user with Twitter`` () =
-    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
+    { homer with TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
     |> format
     |> should equal "Homer Simpson https://homer.simpson@twitter.com"
 
 [<Fact>]
 let ``Formatting user with Date of birth and Twitter`` () =
-    { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
+    { homer with Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
     |> format
     |> should equal "Homer Simpson 1980-01-01 https://homer.simpson@twitter.com"
 
