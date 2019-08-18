@@ -10,6 +10,7 @@
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Domain.fs" t="Include" />
+      <e p="NonEmptyString.fs" t="Include" />
       <e p="Program.fs" t="Include" />
       <e p="Tests.fs" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
