@@ -13,6 +13,7 @@
     <Compile Include="NonEmptyStringTests.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="UnvalidatedUserFormattingTests.fs" />
+    <Compile Include="UserValidationTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
