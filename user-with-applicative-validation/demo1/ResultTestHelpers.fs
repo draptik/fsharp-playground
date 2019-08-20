@@ -13,3 +13,13 @@ let isOkAndEquals getFn expectedInnerValue result =
     match result with
     | Error _ -> fail
     | Ok content -> getFn content |> should equal expectedInnerValue
+
+let isOk result =
+    match result with
+    | Ok _ -> true |> should equal true
+    | Error _ -> fail
+
+let isNotOk result =
+    match result with
+    | Ok _ -> fail
+    | Error _ -> true |> should equal true

@@ -1,8 +1,9 @@
-module Tests
+module demo1.UnvalidatedUserFormattingTests
 
 open System
 open FsUnit.Xunit
 open Xunit
+open demo1.ResultTestHelpers
 open demo1.Domain
 
 let homer : UnvalidatedUser = { Id = 42; FirstName = "Homer"; LastName = "Simpson"; Dob = None; TwitterProfileUrl = None }
@@ -30,3 +31,11 @@ let ``Formatting user with Date of birth and Twitter`` () =
     { homer with Dob = Some (new DateTime(1980, 1, 1)); TwitterProfileUrl = Some "https://homer.simpson@twitter.com" }
     |> format
     |> should equal "Homer Simpson 1980-01-01 https://homer.simpson@twitter.com"
+
+[<Fact>]
+let ``Validating unvalidated but valid user`` () =
+    homer |> validateUser |> isOk
+
+[<Fact>]
+let ``Validating unvalidated but invalid user`` () =
+    {homer with FirstName = ""} |> validateUser |> isNotOk
