@@ -8,12 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="ResultExtensions.fs" />
     <Compile Include="ResultTestHelpers.fs" />
     <Compile Include="NonEmptyString.fs" />
     <Compile Include="NonEmptyStringTests.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="UnvalidatedUserFormattingTests.fs" />
     <Compile Include="UserValidationTests.fs" />
+    <Compile Include="ApplicativeValidationDemoWithTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
