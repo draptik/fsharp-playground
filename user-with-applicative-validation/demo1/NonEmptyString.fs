@@ -8,3 +8,7 @@ let create s =
     match String.IsNullOrWhiteSpace(s) with
     | true -> Error "String must not be empty"
     | false -> Ok(NonEmptyString s)
+
+let get (nes : NonEmptyString) =
+    let (NonEmptyString innerValue) = nes
+    innerValue

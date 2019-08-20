@@ -11,6 +11,7 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Domain.fs" t="Include" />
       <e p="NonEmptyString.fs" t="Include" />
+      <e p="NonEmptyStringTests.fs" t="Include" />
       <e p="Program.fs" t="Include" />
       <e p="UnvalidatedUserFormattingTests.fs" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
