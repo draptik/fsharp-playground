@@ -7,7 +7,7 @@ open demo1.ResultTestHelpers
 [<Fact>]
 let ``Invalid string has correct error message`` () =
     let invalidResult = NonEmptyString.create String.Empty
-    invalidResult |> hasCorrectErrorMessage "String must not be empty"
+    invalidResult |> hasCorrectErrorMessage ["String must not be empty"]
 
 [<Fact>]
 let ``Valid string has correct content`` () =

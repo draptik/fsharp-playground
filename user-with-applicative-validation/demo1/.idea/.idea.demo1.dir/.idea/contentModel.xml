@@ -9,10 +9,12 @@
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="ApplicativeValidationDemoWithTests.fs" t="Include" />
       <e p="Domain.fs" t="Include" />
       <e p="NonEmptyString.fs" t="Include" />
       <e p="NonEmptyStringTests.fs" t="Include" />
       <e p="Program.fs" t="Include" />
+      <e p="ResultExtensions.fs" t="Include" />
       <e p="ResultTestHelpers.fs" t="Include" />
       <e p="UnvalidatedUserFormattingTests.fs" t="Include" />
       <e p="UserValidationTests.fs" t="Include" />

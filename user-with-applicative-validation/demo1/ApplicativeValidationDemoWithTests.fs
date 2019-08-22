@@ -32,13 +32,12 @@ type Customer = {
 let createCustomer customerId email =
     { id=customerId;  email=email }
 
+//let map f xResult =
+//        match xResult with
+//        | Ok x -> Ok (f x)
+//        | Error errs -> Error errs
 
-let map f xResult =
-        match xResult with
-        | Ok x -> Ok (f x)
-        | Error errs -> Error errs
-
-let (<!>) = map            
+let (<!>) = Result.map            
 
 let apply fResult xResult =
         match fResult, xResult with
@@ -57,14 +56,14 @@ let (<*>) = apply
 let createCustomerResultUsingApplicativeValidationMapApply id email =
     let idResult = createCustomerId id
     let emailResult = createEmailAddress email
-    let createCustomerFunctionWithIdResult = map createCustomer idResult
+    let createCustomerFunctionWithIdResult = Result.map createCustomer idResult
     let result = apply createCustomerFunctionWithIdResult emailResult
     result
     
 let createCustomerResultUsingApplicativeValidationMapInfixApply id email =
     let idResult = createCustomerId id
     let emailResult = createEmailAddress email
-    let result = map createCustomer idResult <*> emailResult
+    let result = Result.map createCustomer idResult <*> emailResult
     result
     
 let createCustomerResultUsingApplicativeValidationInfix id email =

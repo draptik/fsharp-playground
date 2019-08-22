@@ -6,9 +6,16 @@ type NonEmptyString = private NonEmptyString of string
 
 let create s =
     match String.IsNullOrWhiteSpace(s) with
-    | true -> Error "String must not be empty"
+    | true -> Error ["String must not be empty"]
     | false -> Ok(NonEmptyString s)
 
 let get (nes : NonEmptyString) =
     let (NonEmptyString innerValue) = nes
     innerValue
+
+//type FirstName = private FirstName of NonEmptyString
+//let createFN s =
+//    match create s with
+//    | Ok x -> Ok(FirstName x)
+//    | Error err -> Error ["FN empty"]
+    
