@@ -67,10 +67,24 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
         let lastNameResult = LastName.create u.LastName
         let f0 = createValidUser u.Id
         let validationResult = f0 <!> firstNameResult <*> lastNameResult // infix map & apply
+        
         match validationResult with
         | Error err -> Error err
         | Ok f3 -> Ok (f3 u.Dob u.TwitterProfileUrl)
    
-    v3 unvalidatedUser
+//    v3 unvalidatedUser
+
+    let v4 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        
+        let validationResult = (Ok (createValidUser u.Id))
+                               <*> firstNameResult
+                               <*> lastNameResult
+                               <*> (Ok u.Dob)
+                               <*> (Ok u.TwitterProfileUrl)
+        validationResult
+   
+    v4 unvalidatedUser
     
     
