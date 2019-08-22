@@ -68,6 +68,7 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
    
 //    v3 unvalidatedUser
 
+    // complete infix solution
     let v4 (u : UnvalidatedUser) =
         let validationResult = Ok (createValidUser u.Id)
                                <*> FirstName.create u.FirstName
@@ -78,6 +79,7 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
    
 //    v4 unvalidatedUser
 
+    // forward pipe (`|>`) does not work, because `apply`'s signature expects previous result as first argument
     let v5 (u : UnvalidatedUser) =
         let x1 = apply (Ok (createValidUser u.Id)) (FirstName.create u.FirstName)
         let x2 = apply x1 (LastName.create u.LastName)
@@ -87,6 +89,7 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
    
 //    v5 unvalidatedUser
     
+    // add `flip` function...
     let v6 (u : UnvalidatedUser) =
         let flip f a b = f b a
             
@@ -98,6 +101,7 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
    
 //    v6 unvalidatedUser
     
+    // use `flip` function with forward piping (`|>`)
     let v7 (u : UnvalidatedUser) =
         let flip f a b = f b a
             
@@ -111,6 +115,7 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
    
 //    v7 unvalidatedUser
 
+    // or just use a lambda expression to achieve the correct argument order
     let v8 (u : UnvalidatedUser) =
         let validationResult =
             apply (Ok (createValidUser u.Id)) (FirstName.create u.FirstName)
@@ -122,6 +127,19 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
    
 //    v8 unvalidatedUser
 
+    // use backward pipe to get rid of parentheses
+    let v8' (u : UnvalidatedUser) =
+        let validationResult =
+            apply (Ok (createValidUser u.Id)) <| FirstName.create u.FirstName
+            |> fun x -> apply x <| LastName.create u.LastName
+            |> fun x ->  apply x <| Ok u.Dob
+            |> fun x -> apply x <| Ok u.TwitterProfileUrl
+
+        validationResult
+   
+//    v8' unvalidatedUser
+
+    // or combine `flip` and `apply` into new function `fapply`
     let v9 (u : UnvalidatedUser) =
         let fapply a b = apply b a
         
