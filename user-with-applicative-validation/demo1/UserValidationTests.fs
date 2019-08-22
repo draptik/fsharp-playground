@@ -19,16 +19,16 @@ let ``Validating an invalid user with missing first name`` () =
 let ``Validating an invalid user with missing first name has correct error message`` () =
     {homer with FirstName = ""}
     |> validateUser 
-    |> hasCorrectErrorMessage ["String must not be empty"]
+    |> hasCorrectErrorMessage ["FirstName must not be empty"]
 
 [<Fact>]
 let ``Validating an invalid user with missing last name has correct error message`` () =
     {homer with LastName = ""}
     |> validateUser 
-    |> hasCorrectErrorMessage ["String must not be empty"]
+    |> hasCorrectErrorMessage ["LastName must not be empty"]
 
 [<Fact>]
 let ``Validating an invalid user with missing first and last name has correct error message`` () =
     {homer with FirstName = ""; LastName = ""}
     |> validateUser 
-    |> hasCorrectErrorMessage ["String must not be empty"; "String must not be empty"]
+    |> hasCorrectErrorMessage ["FirstName must not be empty"; "LastName must not be empty"]

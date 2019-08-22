@@ -11,6 +11,8 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="ApplicativeValidationDemoWithTests.fs" t="Include" />
       <e p="Domain.fs" t="Include" />
+      <e p="FirstName.fs" t="Include" />
+      <e p="LastName.fs" t="Include" />
       <e p="NonEmptyString.fs" t="Include" />
       <e p="NonEmptyStringTests.fs" t="Include" />
       <e p="Program.fs" t="Include" />

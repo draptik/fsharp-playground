@@ -13,9 +13,4 @@ let get (nes : NonEmptyString) =
     let (NonEmptyString innerValue) = nes
     innerValue
 
-//type FirstName = private FirstName of NonEmptyString
-//let createFN s =
-//    match create s with
-//    | Ok x -> Ok(FirstName x)
-//    | Error err -> Error ["FN empty"]
     
