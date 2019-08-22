@@ -85,6 +85,47 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
                                <*> (Ok u.TwitterProfileUrl)
         validationResult
    
-    v4 unvalidatedUser
+//    v4 unvalidatedUser
+
+    let v5 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        
+        let x1 = apply (Ok (createValidUser u.Id)) firstNameResult
+        let x2 = apply x1 lastNameResult
+        let x3 = apply x2 (Ok u.Dob)
+        let validationResult = apply x3 (Ok u.TwitterProfileUrl)
+        validationResult
+   
+//    v5 unvalidatedUser
     
+    let v6 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        
+        let flip f a b = f b a
+            
+        let x1 = apply (Ok (createValidUser u.Id)) firstNameResult
+        let x2 = flip apply lastNameResult x1
+        let x3 = flip apply (Ok u.Dob) x2
+        let validationResult = flip apply (Ok u.TwitterProfileUrl) x3
+        validationResult
+   
+//    v6 unvalidatedUser
+    
+    let v7 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        
+        let flip f a b = f b a
+            
+        let validationResult =
+            apply (Ok (createValidUser u.Id)) firstNameResult
+            |> flip apply lastNameResult
+            |> flip apply (Ok u.Dob)
+            |> flip apply (Ok u.TwitterProfileUrl)
+
+        validationResult
+   
+    v7 unvalidatedUser
     
