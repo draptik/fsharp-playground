@@ -1,7 +1,7 @@
 module demo1.ResultExtensions
 
 // infix map
-//let (<!>) = Result.map
+let (<!>) = Result.map
 
 // Applicative validation =====================================================
 

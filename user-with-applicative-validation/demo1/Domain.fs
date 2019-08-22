@@ -39,12 +39,38 @@ let createValidUser id firstName lastName dob twitter =
     { Id = id; FirstName = firstName; LastName = lastName; Dob = dob; TwitterProfileUrl = twitter }
     
 let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, string list> =
-    let firstNameResult = FirstName.create unvalidatedUser.FirstName
-    let lastNameResult = LastName.create unvalidatedUser.LastName
-    let f0 = createValidUser unvalidatedUser.Id
-    let f1 = Result.map f0 firstNameResult
-    let f2 = apply f1 lastNameResult
-    match f2 with
-    | Error err -> Error err
-    | Ok f3 -> Ok (f3 unvalidatedUser.Dob unvalidatedUser.TwitterProfileUrl)
+    let v1 (unvalidatedUser1 : UnvalidatedUser) =
+        let firstNameResult = FirstName.create unvalidatedUser1.FirstName
+        let lastNameResult = LastName.create unvalidatedUser1.LastName
+        let f0 = createValidUser unvalidatedUser1.Id // partial application
+        let f1 = Result.map f0 firstNameResult // functor map
+        let f2 = apply f1 lastNameResult // applicative apply
+        match f2 with
+        | Error err -> Error err
+        | Ok f3 -> Ok (f3 unvalidatedUser1.Dob unvalidatedUser1.TwitterProfileUrl)
+   
+//    v1 unvalidatedUser
+    
+    let v2 (unvalidatedUser2 : UnvalidatedUser) =
+        let firstNameResult = FirstName.create unvalidatedUser2.FirstName
+        let lastNameResult = LastName.create unvalidatedUser2.LastName
+        let f0 = createValidUser unvalidatedUser2.Id
+        let f1 = Result.map f0 firstNameResult <*> lastNameResult // infix apply
+        match f1 with
+        | Error err -> Error err
+        | Ok f3 -> Ok (f3 unvalidatedUser2.Dob unvalidatedUser2.TwitterProfileUrl)
+   
+//    v2 unvalidatedUser
+
+    let v3 (unvalidatedUser3 : UnvalidatedUser) =
+        let firstNameResult = FirstName.create unvalidatedUser3.FirstName
+        let lastNameResult = LastName.create unvalidatedUser3.LastName
+        let f0 = createValidUser unvalidatedUser3.Id
+        let f1 = f0 <!> firstNameResult <*> lastNameResult // infix map & apply
+        match f1 with
+        | Error err -> Error err
+        | Ok f3 -> Ok (f3 unvalidatedUser3.Dob unvalidatedUser3.TwitterProfileUrl)
+   
+    v3 unvalidatedUser
+    
     
