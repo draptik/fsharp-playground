@@ -39,37 +39,37 @@ let createValidUser id firstName lastName dob twitter =
     { Id = id; FirstName = firstName; LastName = lastName; Dob = dob; TwitterProfileUrl = twitter }
     
 let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, string list> =
-    let v1 (unvalidatedUser1 : UnvalidatedUser) =
-        let firstNameResult = FirstName.create unvalidatedUser1.FirstName
-        let lastNameResult = LastName.create unvalidatedUser1.LastName
-        let f0 = createValidUser unvalidatedUser1.Id // partial application
-        let f1 = Result.map f0 firstNameResult // functor map
-        let f2 = apply f1 lastNameResult // applicative apply
-        match f2 with
+    let v1 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        let f0 = createValidUser u.Id // partial application
+        let mapResult = Result.map f0 firstNameResult // functor map
+        let validationResult = apply mapResult lastNameResult // applicative apply
+        match validationResult with
         | Error err -> Error err
-        | Ok f3 -> Ok (f3 unvalidatedUser1.Dob unvalidatedUser1.TwitterProfileUrl)
+        | Ok f3 -> Ok (f3 u.Dob u.TwitterProfileUrl)
    
 //    v1 unvalidatedUser
     
-    let v2 (unvalidatedUser2 : UnvalidatedUser) =
-        let firstNameResult = FirstName.create unvalidatedUser2.FirstName
-        let lastNameResult = LastName.create unvalidatedUser2.LastName
-        let f0 = createValidUser unvalidatedUser2.Id
-        let f1 = Result.map f0 firstNameResult <*> lastNameResult // infix apply
-        match f1 with
+    let v2 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        let f0 = createValidUser u.Id
+        let validationResult = Result.map f0 firstNameResult <*> lastNameResult // infix apply
+        match validationResult with
         | Error err -> Error err
-        | Ok f3 -> Ok (f3 unvalidatedUser2.Dob unvalidatedUser2.TwitterProfileUrl)
+        | Ok f3 -> Ok (f3 u.Dob u.TwitterProfileUrl)
    
 //    v2 unvalidatedUser
 
-    let v3 (unvalidatedUser3 : UnvalidatedUser) =
-        let firstNameResult = FirstName.create unvalidatedUser3.FirstName
-        let lastNameResult = LastName.create unvalidatedUser3.LastName
-        let f0 = createValidUser unvalidatedUser3.Id
-        let f1 = f0 <!> firstNameResult <*> lastNameResult // infix map & apply
-        match f1 with
+    let v3 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+        let f0 = createValidUser u.Id
+        let validationResult = f0 <!> firstNameResult <*> lastNameResult // infix map & apply
+        match validationResult with
         | Error err -> Error err
-        | Ok f3 -> Ok (f3 unvalidatedUser3.Dob unvalidatedUser3.TwitterProfileUrl)
+        | Ok f3 -> Ok (f3 u.Dob u.TwitterProfileUrl)
    
     v3 unvalidatedUser
     
