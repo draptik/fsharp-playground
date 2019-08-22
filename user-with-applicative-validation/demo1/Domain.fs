@@ -127,5 +127,19 @@ let validateUser (unvalidatedUser : UnvalidatedUser) : Result<ValidatedUser, str
 
         validationResult
    
-    v7 unvalidatedUser
+//    v7 unvalidatedUser
+
+    let v8 (u : UnvalidatedUser) =
+        let firstNameResult = FirstName.create u.FirstName
+        let lastNameResult = LastName.create u.LastName
+            
+        let validationResult =
+            apply (Ok (createValidUser u.Id)) firstNameResult
+            |> fun x -> apply x lastNameResult
+            |> fun x ->  apply x (Ok u.Dob)
+            |> fun x -> apply x (Ok u.TwitterProfileUrl)
+
+        validationResult
+   
+    v8 unvalidatedUser
     
