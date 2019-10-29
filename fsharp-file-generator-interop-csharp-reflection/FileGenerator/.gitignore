@@ -1,0 +1,9 @@
+.idea
+obj
+bin
+.vscode/
+**/.vs/
+*.user
+_ReSharper.Caches
+*.cache
+
