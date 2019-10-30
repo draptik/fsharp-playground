@@ -3,8 +3,6 @@ module FileGeneratorTests.CSharpEnumsTests
 open CSharpLib
 open FileGeneratorTests.CSharpEnums
 
-open CSharpLib
-open FsUnit.Xunit
 open Xunit
 open Swensen.Unquote
 
