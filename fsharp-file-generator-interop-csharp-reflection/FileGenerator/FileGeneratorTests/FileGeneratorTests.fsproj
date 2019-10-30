@@ -10,6 +10,8 @@
     <ItemGroup>
         <Compile Include="Playground.fs" />
         <Compile Include="PlaygroundTests.fs" />
+        <Compile Include="CSharpEnums.fs" />
+        <Compile Include="CSharpEnumsTests.fs" />
         <Compile Include="Domain.fs" />
         <Compile Include="Tests.fs" />
         <Compile Include="Program.fs" />
