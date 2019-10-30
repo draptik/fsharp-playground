@@ -24,7 +24,7 @@ let ``enum is converted to record type list`` () =
                      };
                      {
                          Name = Name (Sample.Baz.ToString());
-                         Value = Value 9;
+                         Value = Value 99;
                          Description = Description "Baz description"
                      };
                 ] @>
