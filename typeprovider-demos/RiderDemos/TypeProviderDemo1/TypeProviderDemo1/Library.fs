@@ -1,5 +1,10 @@
-﻿namespace TypeProviderDemo1
+﻿module Library
 
-module Say =
-    let hello name =
-        printfn "Hello %s" name
+open FSharp.Data.Sql
+
+let [<Literal>] dbVendor = Common.DatabaseProviderTypes.POSTGRESQL
+let [<Literal>] connectionString = "" 
+let [<Literal>] resolutionPath = "" 
+
+
+type sql = SqlDataProvider<Common.DatabaseProviderTypes.POSTGRESQL, connectionString>
