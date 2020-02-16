@@ -1,12 +1,8 @@
 module Tests
 
-open System
 open FsUnit.Xunit
 open Xunit
 
-open TicTacToe
-open TicTacToe
-open TicTacToe
 open TicTacToe
 
 [<Fact>]
