@@ -105,8 +105,8 @@ let updateCells : UpdateCells =
             else
                 x)
 
-type NewGameState = GameState * Player * CellPosition -> GameState
-let newGameState : NewGameState =
+type UpdateGameState = GameState * Player * CellPosition -> GameState
+let updateGameState : UpdateGameState =
     fun (gameState, player, cellPos) ->
         let newCell = { pos = cellPos; state = Played player }
         let newCells = updateCells (gameState.Cells, newCell.pos, player)
@@ -121,7 +121,7 @@ let playerXMoves : PlayerXMoves =
 
         let (PlayerXPos cellPos) = playerXPos
 
-        let newGameState = newGameState (gameState, currentPlayer, cellPos)
+        let newGameState = updateGameState (gameState, currentPlayer, cellPos)
         
         if hasWon (currentPlayer, newGameState) then
             GameWon (newGameState, currentPlayer)
@@ -142,7 +142,7 @@ let playerOMoves : PlayerOMoves =
 
         let (PlayerOPos cellPos) = playerOPos
 
-        let newGameState = newGameState (gameState, currentPlayer, cellPos)
+        let newGameState = updateGameState (gameState, currentPlayer, cellPos)
         
         if hasWon (currentPlayer, newGameState) then
             GameWon (newGameState, currentPlayer)
