@@ -2,14 +2,11 @@ module TicTacToe
 
 type HorizPosition = Left | HCenter | Right
 type VertPosition = Top | VCenter | Bottom
-
 type CellPosition = HorizPosition * VertPosition
-
-type Line = Line of CellPosition list
 
 type Player = PlayerO | PlayerX
 
-type CellState = Played of Player | Empty
+type CellState = OccupiedBy of Player | Empty
 
 type Cell = { pos: CellPosition; state: CellState }
 
@@ -33,13 +30,16 @@ type PlayerOPos = PlayerOPos of CellPosition
 let unwrapPlayerOPos playerOPos =
     let (PlayerOPos pos) = playerOPos
     pos
+let unwrapPlayerXPos playerXPos =
+    let (PlayerXPos pos) = playerXPos
+    pos
 
 type ValidMovesForPlayerX = PlayerXPos list
 type ValidMovesForPlayerO = PlayerOPos list
     
 type MoveResult = 
-    | PlayerXToMove of GameState * ValidMovesForPlayerX 
-    | PlayerOToMove of GameState * ValidMovesForPlayerO 
+    | PlayerXMovesNext of GameState * ValidMovesForPlayerX
+    | PlayerOMovesNext of GameState * ValidMovesForPlayerO
     | GameWon of GameState * Player 
     | GameTied of GameState
 
@@ -75,7 +75,7 @@ let hasWon : HasWon =
             
         let cellWasPlayedBy player cell =
             match cell.state with
-            | Played played -> played = player
+            | OccupiedBy played -> played = player
             | Empty -> false
         
         let getCell gs posToFind = 
@@ -98,17 +98,20 @@ let areAllCellsOccupied : AreAllCellsOccupied =
 type UpdateCells = Cell list * CellPosition * Player -> Cell list
 let updateCells : UpdateCells =
     fun (cells, cellPosition, player) ->
-        cells
-        |> List.map (fun x ->
-            if x.pos = cellPosition then
-                { x with state = Played player }
+
+        let updateCell (cell: Cell) : Cell =
+            if cell.pos = cellPosition then
+                { cell with state = OccupiedBy player }
             else
-                x)
+                cell
+
+        cells
+        |> List.map (fun x -> updateCell x)
 
 type UpdateGameState = GameState * Player * CellPosition -> GameState
 let updateGameState : UpdateGameState =
     fun (gameState, player, cellPos) ->
-        let newCell = { pos = cellPos; state = Played player }
+        let newCell = { pos = cellPos; state = OccupiedBy player }
         let newCells = updateCells (gameState.Cells, newCell.pos, player)
         { Cells = newCells }
 
@@ -119,9 +122,7 @@ let playerXMoves : PlayerXMoves =
 
         let currentPlayer = PlayerX
 
-        let (PlayerXPos cellPos) = playerXPos
-
-        let newGameState = updateGameState (gameState, currentPlayer, cellPos)
+        let newGameState = updateGameState (gameState, currentPlayer, unwrapPlayerXPos playerXPos)
         
         if hasWon (currentPlayer, newGameState) then
             GameWon (newGameState, currentPlayer)
@@ -132,7 +133,7 @@ let playerXMoves : PlayerXMoves =
                 newGameState.Cells
                 |> List.filter (fun x -> x.state = Empty)
                 |> List.map (fun x -> PlayerOPos x.pos)
-            PlayerOToMove (newGameState, validMovesForPlayerO)
+            PlayerOMovesNext (newGameState, validMovesForPlayerO)
 
 type PlayerOMoves = GameState * PlayerOPos -> MoveResult
 let playerOMoves : PlayerOMoves =
@@ -140,9 +141,7 @@ let playerOMoves : PlayerOMoves =
 
         let currentPlayer = PlayerO
 
-        let (PlayerOPos cellPos) = playerOPos
-
-        let newGameState = updateGameState (gameState, currentPlayer, cellPos)
+        let newGameState = updateGameState (gameState, currentPlayer, unwrapPlayerOPos playerOPos)
         
         if hasWon (currentPlayer, newGameState) then
             GameWon (newGameState, currentPlayer)
@@ -153,4 +152,4 @@ let playerOMoves : PlayerOMoves =
                 newGameState.Cells
                 |> List.filter (fun x -> x.state = Empty)
                 |> List.map (fun x -> PlayerXPos x.pos)
-            PlayerXToMove (newGameState, validMovesForPlayerX)
+            PlayerXMovesNext (newGameState, validMovesForPlayerX)
