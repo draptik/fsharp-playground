@@ -115,7 +115,7 @@ let updateGameState : UpdateGameState =
         let newCells = updateCells (gameState.Cells, newCell.pos, player)
         { Cells = newCells }
 
-// public -----------------------------------------
+// public API --------------------------------------
 type PlayerXMoves = GameState * PlayerXPos -> MoveResult
 let playerXMoves : PlayerXMoves =
     fun (gameState, playerXPos) ->
